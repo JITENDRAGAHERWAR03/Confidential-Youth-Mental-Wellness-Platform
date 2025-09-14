@@ -1,0 +1,36 @@
+/* user_dashboard.css - Page specific styles for User Dashboard */
+/* Brand typography override for this page */
+body {
+    font-family: "Poppins", var(--font-sans)
+    }
+/* Keep main content readable width on large screens */
+main .container-fluid {
+    max-width: var(--container-max)
+    }
+/* Mood selector buttons */
+.mood-option {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    line-height: 1;
+    border-radius: var(--radius-1)
+    }
+.mood-option.active {
+    background: var(--primary-soft)
+    }
+/* Chart area sizing */
+#moodChart {
+    min-height: 260px
+    }
+/* Table header sort visual (optional underline on hover) */
+.table-theme th.sortable:hover {
+    text-decoration: underline
+    }
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem
+        }
+    }

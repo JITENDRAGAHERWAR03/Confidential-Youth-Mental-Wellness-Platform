@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MindfulBot - User Dashboard
+  </title>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Bootstrap 5 CSS -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome 6 -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+  <!-- Global Theme Styles -->
+  <link href="style.css" rel="stylesheet"/>
+  <!-- Page Specific Styles -->
+  <link href="user_dashboard.css" rel="stylesheet"/>
+ </head>
+ <body class="view-grid">
+  <!-- Authenticated Header Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+   <div class="container-fluid">
+    <button aria-controls="offcanvasAuth" aria-label="Open menu" class="btn d-md-none me-2" data-bs-target="#offcanvasAuth" data-bs-toggle="offcanvas" type="button">
+     <i class="fa-solid fa-bars fs-5">
+     </i>
+    </button>
+    <a class="navbar-brand d-flex align-items-center" href="./user_dashboard.html">
+     <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mblogo/56/56'" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:28px"/>
+     <span class="fw-bold">
+      MindfulBot
+     </span>
+    </a>
+    <button aria-controls="navbarAuth" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarAuth" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarAuth">
+     <form class="d-none d-lg-flex ms-3 me-auto" role="search" style="max-width:420px; width:100%;">
+      <div class="input-group">
+       <span class="input-group-text bg-white">
+        <i class="fa-solid fa-magnifying-glass">
+        </i>
+       </span>
+       <input aria-label="Search" class="form-control" placeholder="Search chats or mood entries" type="search"/>
+      </div>
+     </form>
+     <ul class="navbar-nav mb-2 mb-lg-0 align-items-center gap-lg-2">
+      <li class="nav-item d-none d-md-block">
+       <a class="btn btn-outline-secondary" href="./chat_page.html">
+        <i class="fa-solid fa-plus me-1">
+        </i>
+        New Chat
+       </a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+       <a class="btn" href="./user_dashboard.html#mood" style="background-color:#50C878;color:#fff;">
+        <i class="fa-solid fa-face-smile me-1">
+        </i>
+        Log Mood
+       </a>
+      </li>
+      <li class="nav-item dropdown">
+       <a aria-expanded="false" class="nav-link position-relative" data-bs-toggle="dropdown" href="#" id="notifDropdown" role="button">
+        <i class="fa-solid fa-bell">
+        </i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+         1
+        </span>
+       </a>
+       <ul aria-labelledby="notifDropdown" class="dropdown-menu dropdown-menu-end">
+        <li class="dropdown-header">
+         Notifications
+        </li>
+        <li>
+         <span class="dropdown-item-text small text-muted">
+          No new alerts
+         </span>
+        </li>
+       </ul>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="./feedback_page.html" title="Send Feedback">
+        <i class="fa-solid fa-message">
+        </i>
+       </a>
+      </li>
+      <li class="nav-item dropdown">
+       <a aria-expanded="false" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" href="#" id="userDropdown" role="button">
+        <i class="fa-solid fa-circle-user fs-5 me-1">
+        </i>
+        <span class="d-none d-sm-inline">
+         Username
+        </span>
+       </a>
+       <ul aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-end">
+        <li>
+         <a class="dropdown-item" href="./settings_page.html">
+          <i class="fa-solid fa-gear me-2">
+          </i>
+          Settings
+         </a>
+        </li>
+        <li>
+         <hr class="dropdown-divider"/>
+        </li>
+        <li>
+         <a class="dropdown-item text-danger" href="./login_page.html">
+          <i class="fa-solid fa-right-from-bracket me-2">
+          </i>
+          Logout
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <div class="container-fluid d-flex p-0">
+   <!-- Static Sidebar for md+ screens -->
+   <aside class="auth-sidebar d-none d-md-flex flex-column flex-shrink-0 p-3 bg-light border-end" style="width: 280px; min-height: 100vh;">
+    <a class="d-flex align-items-center mb-3 link-dark text-decoration-none" href="./user_dashboard.html">
+     <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mblogo/64/64'" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:32px"/>
+     <span class="fs-5 fw-semibold">
+      MindfulBot
+     </span>
+    </a>
+    <div class="user-card d-flex align-items-center gap-2 p-3 mb-3">
+     <div class="auth-avatar rounded-circle d-flex align-items-center justify-content-center">
+      <i class="fa-solid fa-user">
+      </i>
+     </div>
+     <div>
+      <div class="fw-semibold">
+       Username
+      </div>
+      <small class="text-muted">
+       Member
+      </small>
+     </div>
+    </div>
+    <hr/>
+    <ul class="nav nav-pills flex-column mb-auto">
+     <li class="nav-item">
+      <a aria-current="page" class="nav-link d-flex align-items-center gap-2 active" href="./user_dashboard.html">
+       <i class="fa-solid fa-gauge">
+       </i>
+       Dashboard
+      </a>
+     </li>
+     <li>
+      <a class="nav-link d-flex align-items-center gap-2" href="./chat_page.html">
+       <i class="fa-solid fa-comments">
+       </i>
+       Chat
+      </a>
+     </li>
+     <li class="mt-2">
+      <a aria-controls="authTrackCollapse" aria-expanded="true" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authTrackCollapse" role="button">
+       <i class="fa-solid fa-chart-line">
+       </i>
+       Mood &amp; Trends
+      </a>
+      <div class="collapse show submenu" id="authTrackCollapse">
+       <ul class="nav flex-column ms-1">
+        <li>
+         <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#mood">
+          <i class="fa-solid fa-face-smile">
+          </i>
+          Log Mood
+         </a>
+        </li>
+        <li>
+         <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#trends">
+          <i class="fa-solid fa-wave-square">
+          </i>
+          View Trends
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="mt-2">
+      <a class="nav-link d-flex align-items-center gap-2" href="./feedback_page.html">
+       <i class="fa-solid fa-lightbulb">
+       </i>
+       Feedback
+      </a>
+     </li>
+     <li class="mt-2">
+      <a aria-controls="authAccountCollapse" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authAccountCollapse" role="button">
+       <i class="fa-solid fa-user-gear">
+       </i>
+       Account &amp; Settings
+      </a>
+      <div class="collapse submenu" id="authAccountCollapse">
+       <ul class="nav flex-column ms-1">
+        <li>
+         <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#security">
+          <i class="fa-solid fa-shield-halved">
+          </i>
+          Security (2FA)
+         </a>
+        </li>
+        <li>
+         <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#account">
+          <i class="fa-solid fa-trash-can">
+          </i>
+          Delete Account
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+     <li class="mt-2">
+      <a class="nav-link d-flex align-items-center gap-2" href="./home_page.html">
+       <i class="fa-solid fa-circle-info">
+       </i>
+       Help &amp; About
+      </a>
+     </li>
+    </ul>
+   </aside>
+   <!-- Offcanvas Sidebar for < md screens -->
+   <div aria-labelledby="offcanvasAuthLabel" class="offcanvas offcanvas-start" id="offcanvasAuth" tabindex="-1">
+    <div class="offcanvas-header">
+     <h5 class="offcanvas-title d-flex align-items-center gap-2" id="offcanvasAuthLabel">
+      <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mblogo/48/48'" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:24px"/>
+      MindfulBot
+     </h5>
+     <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button">
+     </button>
+    </div>
+    <div class="offcanvas-body p-0">
+     <div class="p-3 border-bottom d-flex align-items-center gap-2">
+      <div class="auth-avatar rounded-circle d-flex align-items-center justify-content-center">
+       <i class="fa-solid fa-user">
+       </i>
+      </div>
+      <div>
+       <div class="fw-semibold">
+        Username
+       </div>
+       <small class="text-muted">
+        Member
+       </small>
+      </div>
+     </div>
+     <ul class="nav nav-pills flex-column mb-auto p-3">
+      <li class="nav-item">
+       <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html">
+        <i class="fa-solid fa-gauge">
+        </i>
+        Dashboard
+       </a>
+      </li>
+      <li>
+       <a class="nav-link d-flex align-items-center gap-2" href="./chat_page.html">
+        <i class="fa-solid fa-comments">
+        </i>
+        Chat
+       </a>
+      </li>
+      <li class="mt-2">
+       <a aria-controls="authTrackCollapseSm" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authTrackCollapseSm" role="button">
+        <i class="fa-solid fa-chart-line">
+        </i>
+        Mood &amp; Trends
+       </a>
+       <div class="collapse submenu" id="authTrackCollapseSm">
+        <ul class="nav flex-column ms-1">
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#mood">
+           <i class="fa-solid fa-face-smile">
+           </i>
+           Log Mood
+          </a>
+         </li>
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#trends">
+           <i class="fa-solid fa-wave-square">
+           </i>
+           View Trends
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="mt-2">
+       <a class="nav-link d-flex align-items-center gap-2" href="./feedback_page.html">
+        <i class="fa-solid fa-lightbulb">
+        </i>
+        Feedback
+       </a>
+      </li>
+      <li class="mt-2">
+       <a aria-controls="authAccountCollapseSm" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authAccountCollapseSm" role="button">
+        <i class="fa-solid fa-user-gear">
+        </i>
+        Account &amp; Settings
+       </a>
+       <div class="collapse submenu" id="authAccountCollapseSm">
+        <ul class="nav flex-column ms-1">
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#security">
+           <i class="fa-solid fa-shield-halved">
+           </i>
+           Security (2FA)
+          </a>
+         </li>
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#account">
+           <i class="fa-solid fa-trash-can">
+           </i>
+           Delete Account
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="mt-2">
+       <a class="nav-link d-flex align-items-center gap-2" href="./home_page.html">
+        <i class="fa-solid fa-circle-info">
+        </i>
+        Help &amp; About
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <!-- Main Content -->
+   <main class="flex-grow-1">
+    <div class="container-fluid py-3 py-md-4">
+     <!-- Breadcrumb / System feedback region -->
+     <nav aria-label="breadcrumb" class="breadcrumb small">
+      <ol class="breadcrumb mb-2">
+       <li class="breadcrumb-item">
+        <a href="./home_page.html">
+         Home
+        </a>
+       </li>
+       <li aria-current="page" class="breadcrumb-item active">
+        Dashboard
+       </li>
+      </ol>
+     </nav>
+     <div aria-live="polite" class="mb-3" id="systemFeedback">
+     </div>
+     <!-- Page Header -->
+     <div class="page-header">
+      <div class="d-flex align-items-center gap-2">
+       <h1 class="page-title m-0">
+        Welcome back,
+        <span id="usernameDisp">
+         Alex
+        </span>
+        !
+       </h1>
+       <span class="badge-soft success ms-1">
+        Member
+       </span>
+      </div>
+      <div class="d-none d-md-flex gap-2">
+       <a class="btn btn-outline-secondary" href="./chat_page.html">
+        <i class="fa-solid fa-plus me-1">
+        </i>
+        New Chat
+       </a>
+       <a class="btn btn-success" href="#mood">
+        <i class="fa-solid fa-face-smile me-1">
+        </i>
+        Log Mood
+       </a>
+      </div>
+     </div>
+     <!-- Key Metrics -->
+     <div class="grid auto-fit-lg mb-4">
+      <div class="metric-card">
+       <div class="metric-title">
+        7-day Average Mood
+       </div>
+       <div class="metric-value" id="avg7">
+        3.6
+       </div>
+       <div class="text-muted">
+        Scale 1-5
+       </div>
+      </div>
+      <div class="metric-card">
+       <div class="metric-title">
+        30-day Entries
+       </div>
+       <div class="metric-value" id="entries30">
+        22
+       </div>
+       <div class="text-muted">
+        Logs this month
+       </div>
+      </div>
+      <div class="metric-card">
+       <div class="metric-title">
+        Best Streak
+       </div>
+       <div class="metric-value" id="bestStreak">
+        12 days
+       </div>
+       <div class="text-muted">
+        Consecutive logging
+       </div>
+      </div>
+     </div>
+     <div class="row g-3 g-lg-4">
+      <!-- Mood Logger -->
+      <div class="col-12 col-lg-5" id="mood">
+       <div class="card h-100">
+        <div class="card-header">
+         <div class="title d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clipboard-check">
+          </i>
+          How are you feeling today?
+         </div>
+        </div>
+        <div class="card-body">
+         <div class="mb-3">
+          <div aria-label="Mood selector" class="d-flex flex-wrap align-items-center gap-2" id="moodSelector" role="group">
+           <button class="btn btn-light mood-option" data-bs-toggle="tooltip" data-mood="1" title="Very Low" type="button">
+            😞
+           </button>
+           <button class="btn btn-light mood-option" data-bs-toggle="tooltip" data-mood="2" title="Low" type="button">
+            🙁
+           </button>
+           <button class="btn btn-light mood-option" data-bs-toggle="tooltip" data-mood="3" title="Neutral" type="button">
+            😐
+           </button>
+           <button class="btn btn-light mood-option" data-bs-toggle="tooltip" data-mood="4" title="Good" type="button">
+            🙂
+           </button>
+           <button class="btn btn-light mood-option" data-bs-toggle="tooltip" data-mood="5" title="Very Good" type="button">
+            😄
+           </button>
+          </div>
+         </div>
+         <div class="mb-3">
+          <label class="form-label" for="moodNote">
+           Add a note (optional)
+          </label>
+          <textarea class="form-control" id="moodNote" placeholder="What influenced your mood today?" rows="3"></textarea>
+         </div>
+         <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary" disabled="" id="submitMood">
+           <span class="submit-label">
+            <i class="fa-solid fa-paper-plane me-1">
+            </i>
+            Log Mood
+           </span>
+           <span aria-hidden="true" class="spinner-border spinner-border-sm d-none" role="status">
+           </span>
+          </button>
+          <small class="text-muted">
+           Entries auto-time stamped
+          </small>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- Visualization -->
+      <div class="col-12 col-lg-7" id="trends">
+       <div class="card h-100">
+        <div class="card-header">
+         <div class="title d-flex align-items-center gap-2">
+          <i class="fa-solid fa-wave-square">
+          </i>
+          Your Mood Trends
+         </div>
+         <div class="d-flex align-items-center gap-2">
+          <select class="form-select form-select-sm" id="timeframe" style="min-width:160px">
+           <option value="7">
+            Last 7 Days
+           </option>
+           <option selected="" value="30">
+            Last 30 Days
+           </option>
+           <option value="all">
+            All Time
+           </option>
+          </select>
+          <div aria-label="Chart zoom controls" class="btn-group btn-group-sm" role="group">
+           <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" id="zoomIn" title="Zoom In">
+            <i class="fa-solid fa-magnifying-glass-plus">
+            </i>
+           </button>
+           <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" id="zoomOut" title="Zoom Out">
+            <i class="fa-solid fa-magnifying-glass-minus">
+            </i>
+           </button>
+           <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" id="resetZoom" title="Reset Zoom">
+            <i class="fa-solid fa-rotate">
+            </i>
+           </button>
+          </div>
+         </div>
+        </div>
+        <div class="card-body">
+         <div class="skeleton mb-3" id="chartSkeleton" style="height:220px; border-radius:10px;">
+         </div>
+         <canvas aria-label="Mood Trend Chart" class="w-100" height="140" id="moodChart" role="img">
+         </canvas>
+         <div class="empty-state mt-3 d-none" id="emptyState">
+          <i class="fa-regular fa-face-smile fs-2">
+          </i>
+          <div class="empty-state-text">
+           No mood data logged for this period. Start logging your mood to see your trends!
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- Recent Mood Logs Table -->
+     <div class="card mt-4">
+      <div class="card-header">
+       <div class="title d-flex align-items-center gap-2">
+        <i class="fa-solid fa-clock-rotate-left">
+        </i>
+        Recent Mood Logs
+       </div>
+       <div class="d-flex flex-wrap align-items-center gap-2">
+        <div class="input-group input-group-sm" style="max-width:260px;">
+         <span class="input-group-text bg-white">
+          <i class="fa-solid fa-magnifying-glass">
+          </i>
+         </span>
+         <input aria-label="Search notes" class="form-control" id="tableSearch" placeholder="Search notes..." type="text"/>
+        </div>
+        <select class="form-select form-select-sm" id="moodFilter" style="min-width:140px">
+         <option value="">
+          All moods
+         </option>
+         <option value="5">
+          Very Good (5)
+         </option>
+         <option value="4">
+          Good (4)
+         </option>
+         <option value="3">
+          Neutral (3)
+         </option>
+         <option value="2">
+          Low (2)
+         </option>
+         <option value="1">
+          Very Low (1)
+         </option>
+        </select>
+       </div>
+      </div>
+      <div class="card-body p-0">
+       <div class="table-responsive">
+        <table class="table table-theme mb-0" id="logsTable">
+         <thead>
+          <tr>
+           <th class="sortable" data-sort="date" scope="col">
+            Date
+            <i class="fa-solid fa-sort ms-1">
+            </i>
+           </th>
+           <th class="sortable" data-sort="mood" scope="col">
+            Mood
+            <i class="fa-solid fa-sort ms-1">
+            </i>
+           </th>
+           <th scope="col">
+            Note
+           </th>
+           <th class="text-end" scope="col">
+            Actions
+           </th>
+          </tr>
+         </thead>
+         <tbody id="logsTbody">
+          <!-- Rows injected by JS -->
+         </tbody>
+        </table>
+       </div>
+      </div>
+      <div class="card-footer d-flex flex-wrap align-items-center justify-content-between gap-2">
+       <small class="text-muted" id="paginationInfo">
+        Showing 1-6 of 24
+       </small>
+       <nav aria-label="Recent logs pagination">
+        <ul class="pagination pagination-sm mb-0">
+         <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">
+           Previous
+          </a>
+         </li>
+         <li class="page-item active">
+          <a class="page-link" href="#">
+           1
+          </a>
+         </li>
+         <li class="page-item">
+          <a class="page-link" href="#">
+           2
+          </a>
+         </li>
+         <li class="page-item">
+          <a class="page-link" href="#">
+           3
+          </a>
+         </li>
+         <li class="page-item">
+          <a class="page-link" href="#">
+           Next
+          </a>
+         </li>
+        </ul>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <!-- Authenticated Footer -->
+  <footer class="border-top bg-light mt-auto">
+   <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+    <div class="d-flex align-items-center gap-2">
+     <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mblogo/40/40'" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:20px"/>
+     <small class="text-muted">
+      © 2026 MindfulBot
+     </small>
+    </div>
+    <ul class="nav small align-items-center">
+     <li class="nav-item me-2 d-none d-md-inline">
+      <a class="btn btn-outline-secondary btn-sm" href="./chat_page.html">
+       <i class="fa-solid fa-plus me-1">
+       </i>
+       New Chat
+      </a>
+     </li>
+     <li class="nav-item me-3 d-none d-md-inline">
+      <a class="btn btn-sm" href="./user_dashboard.html#mood" style="background-color:#50C878;color:#fff;">
+       <i class="fa-solid fa-face-smile me-1">
+       </i>
+       Log Mood
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#terms">
+       Terms
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#privacy">
+       Privacy
+      </a>
+     </li>
+    </ul>
+   </div>
+  </footer>
+  <!-- JS: Bootstrap, Chart.js, Plugins, SweetAlert2 -->
+  <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.umd.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js">
+  </script>
+  <script>
+   // Enable tooltips
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+// Mock username display (would come from user profile)
+const username = 'Alex';
+document.getElementById('usernameDisp').textContent = username;
+
+// Mood selection
+let selectedMood = null;
+const moodButtons = document.querySelectorAll('.mood-option');
+const submitBtn = document.getElementById('submitMood');
+const submitSpinner = submitBtn.querySelector('.spinner-border');
+
+moodButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        moodButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedMood = parseInt(btn.getAttribute('data-mood'), 10);
+        submitBtn.disabled = false;
+    });
+});
+
+// System feedback helper
+function showAlert(type, message) {
+    const wrap = document.getElementById('systemFeedback');
+    const id = 'alrt-' + Date.now();
+    wrap.innerHTML = `<div id="${id}" class="alert alert-${type} alert-dismissible fade show" role="alert">
+                          ${message}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>`;
+    setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) bootstrap.Alert.getOrCreateInstance(el).close();
+    }, 5000);
+}
+
+// Mock API for mood data
+function generateMockData(days = 30) {
+    const data = [];
+    const now = new Date();
+    for (let i = days - 1; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(now.getDate() - i);
+        // pseudo-random but stable mood: 2..5
+        const mood = 2 + Math.round((Math.sin(i / 3) + 1) * 1.5); // 2..5
+        data.push({
+            date: d.toISOString().slice(0, 10),
+            mood,
+            note: i % 5 === 0 ? 'Workout and reading' : (i % 7 === 0 ? 'Stressful workday' : '')
+        });
+    }
+    return data;
+}
+
+let allMoodData = generateMockData(60); // pretend 60 days of data
+
+function fetchMoodData(timeframe) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            let data = allMoodData;
+            if (timeframe !== 'all') {
+                const n = parseInt(timeframe, 10);
+                data = allMoodData.slice(-n);
+            }
+            resolve(data);
+        }, 500); // simulate latency
+    });
+}
+
+// Chart setup
+const ctx = document.getElementById('moodChart').getContext('2d');
+Chart.register(window['chartjs-plugin-zoom']);
+let chartInstance = null;
+
+function renderChart(data) {
+    const labels = data.map(d => d.date);
+    const points = data.map(d => d.mood);
+
+    const config = {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Daily Mood (1-5)',
+                data: points,
+                borderColor: 'rgba(0,0,255,0.9)',
+                backgroundColor: 'rgba(0,0,255,0.15)',
+                pointBackgroundColor: 'rgba(0,0,255,0.9)',
+                pointRadius: 3,
+                tension: 0.25,
+                fill: true,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    min: 1,
+                    max: 5,
+                    ticks: {
+                        stepSize: 1
+                    }
+                },
+                x: {
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 10
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `Mood: ${ctx.parsed.y}`
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                zoom: {
+                    zoom: {
+                        wheel: {
+                            enabled: true
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'x'
+                    },
+                    pan: {
+                        enabled: true,
+                        mode: 'x'
+                    }
+                }
+            }
+        }
+    };
+
+    if (chartInstance) chartInstance.destroy();
+    chartInstance = new Chart(ctx, config);
+}
+
+const timeframeSel = document.getElementById('timeframe');
+const skeleton = document.getElementById('chartSkeleton');
+const emptyState = document.getElementById('emptyState');
+
+async function loadChart() {
+    skeleton.classList.remove('d-none');
+    emptyState.classList.add('d-none');
+    const tf = timeframeSel.value;
+    const data = await fetchMoodData(tf);
+    skeleton.classList.add('d-none');
+    if (!data || data.length === 0) {
+        emptyState.classList.remove('d-none');
+        if (chartInstance) chartInstance.destroy();
+        return;
+    }
+    renderChart(data);
+    updateMetrics(data);
+    refreshTable(data.slice(-6)); // show last 6 entries in table initially
+}
+
+timeframeSel.addEventListener('change', loadChart);
+
+// Zoom controls
+document.getElementById('zoomIn').addEventListener('click', () => chartInstance && chartInstance.zoom(1.2));
+document.getElementById('zoomOut').addEventListener('click', () => chartInstance && chartInstance.zoom(0.8));
+document.getElementById('resetZoom').addEventListener('click', () => chartInstance && chartInstance.resetZoom());
+
+function updateMetrics(data) {
+    const last7 = data.slice(-7);
+    const avg = last7.length ? (last7.reduce((s, d) => s + d.mood, 0) / last7.length) : 0;
+    document.getElementById('avg7').textContent = avg.toFixed(1);
+    // entries30 is count within last 30 or timeframe
+    const cnt = data.length > 30 ? 30 : data.length;
+    document.getElementById('entries30').textContent = cnt;
+    // bestStreak: simple mock calculation
+    document.getElementById('bestStreak').textContent = '12 days';
+}
+
+// Mood logging submit
+document.getElementById('submitMood').addEventListener('click', async (e) => {
+    e.preventDefault();
+    if (!selectedMood) return;
+    submitBtn.disabled = true;
+    submitSpinner.classList.remove('d-none');
+
+    // Simulated API POST
+    setTimeout(async () => {
+        const now = new Date();
+        const entry = {
+            date: now.toISOString().slice(0, 10),
+            mood: selectedMood,
+            note: document.getElementById('moodNote').value.trim()
+        };
+        allMoodData.push(entry);
+        document.getElementById('moodNote').value = '';
+        moodButtons.forEach(b => b.classList.remove('active'));
+        selectedMood = null;
+        submitSpinner.classList.add('d-none');
+        showAlert('success', '<strong>Logged!</strong> Your mood has been recorded.');
+        Swal.fire({
+            icon: 'success',
+            title: 'Mood Logged',
+            text: 'Your entry was saved successfully.',
+            timer: 1500,
+            showConfirmButton: false
+        });
+        // Refresh chart and table to include new entry
+        await loadChart();
+        submitBtn.disabled = true;
+    }, 700);
+});
+
+// Recent Logs Table
+const tbody = document.getElementById('logsTbody');
+const tableSearch = document.getElementById('tableSearch');
+const moodFilter = document.getElementById('moodFilter');
+let tableData = [];
+
+function emojiFor(m) {
+    return m === 5 ? '😄' : m === 4 ? '🙂' : m === 3 ? '😐' : m === 2 ? '🙁' : '😞';
+}
+
+function refreshTable(rows) {
+    tableData = rows;
+    applyTableFiltersAndRender();
+}
+
+function applyTableFiltersAndRender(sortBy = null, sortDir = 'desc') {
+    let rows = [...tableData];
+    const q = tableSearch.value.toLowerCase();
+    const mf = moodFilter.value;
+
+    if (q) rows = rows.filter(r => (r.note || '').toLowerCase().includes(q));
+    if (mf) rows = rows.filter(r => String(r.mood) === mf);
+
+    if (sortBy) {
+        rows.sort((a, b) => {
+            if (sortBy === 'date') return (sortDir === 'asc' ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date));
+            if (sortBy === 'mood') return (sortDir === 'asc' ? a.mood - b.mood : b.mood - a.mood);
+            return 0;
+        });
+    }
+
+    tbody.innerHTML = rows.map(r => `
+        <tr>
+          <td>${new Date(r.date + 'T00:00:00').toLocaleDateString()}</td>
+          <td><span class="me-1">${emojiFor(r.mood)}</span> ${r.mood}</td>
+          <td>${r.note ? r.note : '<span class="text-muted">—</span>'}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-light me-1" title="View" data-bs-toggle="tooltip"><i class="fa-regular fa-eye"></i></button>
+            <button class="btn btn-sm btn-danger" title="Delete" data-bs-toggle="tooltip" onclick="confirmDelete('${r.date}', ${r.mood})"><i class="fa-regular fa-trash-can"></i></button>
+          </td>
+        </tr>`).join('');
+
+    // Update pagination info (mock)
+    document.getElementById('paginationInfo').textContent = `Showing 1-${rows.length} of ${rows.length}`;
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+}
+
+tableSearch.addEventListener('input', () => applyTableFiltersAndRender());
+moodFilter.addEventListener('change', () => applyTableFiltersAndRender());
+
+// Sorting
+let currentSort = {
+    key: 'date',
+    dir: 'desc'
+};
+document.querySelectorAll('.sortable').forEach(th => {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', () => {
+        const key = th.getAttribute('data-sort');
+        currentSort.dir = (currentSort.key === key && currentSort.dir === 'desc') ? 'asc' : 'desc';
+        currentSort.key = key;
+        applyTableFiltersAndRender(currentSort.key, currentSort.dir);
+    });
+});
+
+// Delete confirmation
+window.confirmDelete = function(date, mood) {
+    Swal.fire({
+        title: 'Delete entry?',
+        text: `This will remove your ${new Date(date+'T00:00:00').toLocaleDateString()} mood entry (${mood}).`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete',
+        cancelButtonText: 'Cancel'
+    }).then(res => {
+        if (res.isConfirmed) {
+            // remove from allMoodData
+            const idx = allMoodData.findIndex(d => d.date === date && d.mood === mood);
+            if (idx > -1) allMoodData.splice(idx, 1);
+            showAlert('info', 'Entry deleted.');
+            loadChart();
+        }
+    });
+}
+
+// Initial load
+(async function init() {
+    await loadChart();
+})();
+  </script>
+ </body>
+</html>

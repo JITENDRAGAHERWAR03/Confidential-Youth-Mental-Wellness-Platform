@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MindfulBot — Settings
+  </title>
+  <!-- Brand Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Bootstrap 5 CSS -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Global Theme Styles -->
+  <link href="style.css" rel="stylesheet"/>
+  <!-- Page-specific CSS -->
+  <link href="settings_page.css" rel="stylesheet"/>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+  </script>
+ </head>
+ <body>
+  <!-- Authenticated Header Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+   <div class="container-fluid">
+    <button aria-controls="offcanvasAuth" aria-label="Open menu" class="btn d-md-none me-2" data-bs-target="#offcanvasAuth" data-bs-toggle="offcanvas" type="button">
+     <i class="fa-solid fa-bars fs-5">
+     </i>
+    </button>
+    <a class="navbar-brand d-flex align-items-center" href="./user_dashboard.html">
+     <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbotlogo/56/56';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:28px"/>
+     <span class="fw-bold">
+      MindfulBot
+     </span>
+    </a>
+    <button aria-controls="navbarAuth" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarAuth" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarAuth">
+     <form class="d-none d-lg-flex ms-3 me-auto" role="search" style="max-width:420px; width:100%;">
+      <div class="input-group">
+       <span class="input-group-text bg-white">
+        <i class="fa-solid fa-magnifying-glass">
+        </i>
+       </span>
+       <input aria-label="Search" class="form-control" placeholder="Search chats or mood entries" type="search"/>
+      </div>
+     </form>
+     <ul class="navbar-nav mb-2 mb-lg-0 align-items-center gap-lg-2">
+      <li class="nav-item d-none d-md-block">
+       <a class="btn btn-outline-secondary" href="./chat_page.html">
+        <i class="fa-solid fa-plus me-1">
+        </i>
+        New Chat
+       </a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+       <a class="btn" href="./user_dashboard.html#mood" style="background-color:#50C878;color:#fff;">
+        <i class="fa-solid fa-face-smile me-1">
+        </i>
+        Log Mood
+       </a>
+      </li>
+      <li class="nav-item dropdown">
+       <a aria-expanded="false" class="nav-link position-relative" data-bs-toggle="dropdown" href="#" id="notifDropdown" role="button">
+        <i class="fa-solid fa-bell">
+        </i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+         1
+        </span>
+       </a>
+       <ul aria-labelledby="notifDropdown" class="dropdown-menu dropdown-menu-end">
+        <li class="dropdown-header">
+         Notifications
+        </li>
+        <li>
+         <span class="dropdown-item-text small text-muted">
+          No new alerts
+         </span>
+        </li>
+       </ul>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="./feedback_page.html" title="Send Feedback">
+        <i class="fa-solid fa-message">
+        </i>
+       </a>
+      </li>
+      <li class="nav-item dropdown">
+       <a aria-expanded="false" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" href="#" id="userDropdown" role="button">
+        <i class="fa-solid fa-circle-user fs-5 me-1">
+        </i>
+        <span class="d-none d-sm-inline">
+         Username
+        </span>
+       </a>
+       <ul aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-end">
+        <li>
+         <a class="dropdown-item" href="./settings_page.html">
+          <i class="fa-solid fa-gear me-2">
+          </i>
+          Settings
+         </a>
+        </li>
+        <li>
+         <hr class="dropdown-divider"/>
+        </li>
+        <li>
+         <a class="dropdown-item text-danger" href="./login_page.html">
+          <i class="fa-solid fa-right-from-bracket me-2">
+          </i>
+          Logout
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <div class="container-fluid px-0">
+   <div class="d-flex">
+    <!-- Static Sidebar for md+ screens -->
+    <aside class="auth-sidebar d-none d-md-flex flex-column flex-shrink-0 p-3 bg-light border-end" style="width: 280px; min-height: 100vh;">
+     <a class="d-flex align-items-center mb-3 link-dark text-decoration-none" href="./user_dashboard.html">
+      <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbotlogo/64/64';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:32px"/>
+      <span class="fs-5 fw-semibold">
+       MindfulBot
+      </span>
+     </a>
+     <div class="user-card d-flex align-items-center gap-2 p-3 mb-3">
+      <div class="auth-avatar rounded-circle d-flex align-items-center justify-content-center">
+       <i class="fa-solid fa-user">
+       </i>
+      </div>
+      <div>
+       <div class="fw-semibold">
+        Username
+       </div>
+       <small class="text-muted">
+        Member
+       </small>
+      </div>
+     </div>
+     <hr/>
+     <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+       <a aria-current="page" class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html">
+        <i class="fa-solid fa-gauge">
+        </i>
+        Dashboard
+       </a>
+      </li>
+      <li>
+       <a class="nav-link d-flex align-items-center gap-2" href="./chat_page.html">
+        <i class="fa-solid fa-comments">
+        </i>
+        Chat
+       </a>
+      </li>
+      <li class="mt-2">
+       <a aria-controls="authTrackCollapse" aria-expanded="true" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authTrackCollapse" role="button">
+        <i class="fa-solid fa-chart-line">
+        </i>
+        Mood &amp; Trends
+       </a>
+       <div class="collapse show submenu" id="authTrackCollapse">
+        <ul class="nav flex-column ms-1">
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#mood">
+           <i class="fa-solid fa-face-smile">
+           </i>
+           Log Mood
+          </a>
+         </li>
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#trends">
+           <i class="fa-solid fa-wave-square">
+           </i>
+           View Trends
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="mt-2">
+       <a class="nav-link d-flex align-items-center gap-2" href="./feedback_page.html">
+        <i class="fa-solid fa-lightbulb">
+        </i>
+        Feedback
+       </a>
+      </li>
+      <li class="mt-2">
+       <a aria-controls="authAccountCollapse" aria-expanded="true" class="nav-link d-flex align-items-center gap-2 active" data-bs-toggle="collapse" href="#authAccountCollapse" role="button">
+        <i class="fa-solid fa-user-gear">
+        </i>
+        Account &amp; Settings
+       </a>
+       <div class="collapse show submenu" id="authAccountCollapse">
+        <ul class="nav flex-column ms-1">
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#security">
+           <i class="fa-solid fa-shield-halved">
+           </i>
+           Security (2FA)
+          </a>
+         </li>
+         <li>
+          <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#account">
+           <i class="fa-solid fa-trash-can">
+           </i>
+           Delete Account
+          </a>
+         </li>
+        </ul>
+       </div>
+      </li>
+      <li class="mt-2">
+       <a class="nav-link d-flex align-items-center gap-2" href="./home_page.html">
+        <i class="fa-solid fa-circle-info">
+        </i>
+        Help &amp; About
+       </a>
+      </li>
+     </ul>
+    </aside>
+    <!-- Offcanvas Sidebar for < md screens -->
+    <div aria-labelledby="offcanvasAuthLabel" class="offcanvas offcanvas-start" id="offcanvasAuth" tabindex="-1">
+     <div class="offcanvas-header">
+      <h5 class="offcanvas-title d-flex align-items-center gap-2" id="offcanvasAuthLabel">
+       <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbotlogo/48/48';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:24px"/>
+       MindfulBot
+      </h5>
+      <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button">
+      </button>
+     </div>
+     <div class="offcanvas-body p-0">
+      <div class="p-3 border-bottom d-flex align-items-center gap-2">
+       <div class="auth-avatar rounded-circle d-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-user">
+        </i>
+       </div>
+       <div>
+        <div class="fw-semibold">
+         Username
+        </div>
+        <small class="text-muted">
+         Member
+        </small>
+       </div>
+      </div>
+      <ul class="nav nav-pills flex-column mb-auto p-3">
+       <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html">
+         <i class="fa-solid fa-gauge">
+         </i>
+         Dashboard
+        </a>
+       </li>
+       <li>
+        <a class="nav-link d-flex align-items-center gap-2" href="./chat_page.html">
+         <i class="fa-solid fa-comments">
+         </i>
+         Chat
+        </a>
+       </li>
+       <li class="mt-2">
+        <a aria-controls="authTrackCollapseSm" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authTrackCollapseSm" role="button">
+         <i class="fa-solid fa-chart-line">
+         </i>
+         Mood &amp; Trends
+        </a>
+        <div class="collapse submenu" id="authTrackCollapseSm">
+         <ul class="nav flex-column ms-1">
+          <li>
+           <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#mood">
+            <i class="fa-solid fa-face-smile">
+            </i>
+            Log Mood
+           </a>
+          </li>
+          <li>
+           <a class="nav-link d-flex align-items-center gap-2" href="./user_dashboard.html#trends">
+            <i class="fa-solid fa-wave-square">
+            </i>
+            View Trends
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="mt-2">
+        <a class="nav-link d-flex align-items-center gap-2" href="./feedback_page.html">
+         <i class="fa-solid fa-lightbulb">
+         </i>
+         Feedback
+        </a>
+       </li>
+       <li class="mt-2">
+        <a aria-controls="authAccountCollapseSm" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#authAccountCollapseSm" role="button">
+         <i class="fa-solid fa-user-gear">
+         </i>
+         Account &amp; Settings
+        </a>
+        <div class="collapse submenu" id="authAccountCollapseSm">
+         <ul class="nav flex-column ms-1">
+          <li>
+           <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#security">
+            <i class="fa-solid fa-shield-halved">
+            </i>
+            Security (2FA)
+           </a>
+          </li>
+          <li>
+           <a class="nav-link d-flex align-items-center gap-2" href="./settings_page.html#account">
+            <i class="fa-solid fa-trash-can">
+            </i>
+            Delete Account
+           </a>
+          </li>
+         </ul>
+        </div>
+       </li>
+       <li class="mt-2">
+        <a class="nav-link d-flex align-items-center gap-2" href="./home_page.html">
+         <i class="fa-solid fa-circle-info">
+         </i>
+         Help &amp; About
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+     <div class="container py-4">
+      <div class="page-header">
+       <div class="d-flex align-items-center gap-2">
+        <h1 class="page-title m-0">
+         Settings
+        </h1>
+        <span class="badge bg-light text-muted">
+         Manage Security &amp; Account
+        </span>
+       </div>
+       <div>
+        <nav aria-label="breadcrumb">
+         <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item">
+           <a href="./home_page.html">
+            Home
+           </a>
+          </li>
+          <li class="breadcrumb-item">
+           <a href="./user_dashboard.html">
+            Dashboard
+           </a>
+          </li>
+          <li aria-current="page" class="breadcrumb-item active">
+           Settings
+          </li>
+         </ol>
+        </nav>
+       </div>
+      </div>
+      <!-- Settings Layout -->
+      <div class="row g-4">
+       <!-- Security Section -->
+       <section class="col-12 col-xxl-7" id="security">
+        <div class="card app-card">
+         <div class="card-header">
+          <div class="d-flex align-items-center gap-2">
+           <i class="fa-solid fa-shield-halved text-info">
+           </i>
+           <h2 class="h5 m-0">
+            Security
+           </h2>
+          </div>
+          <div class="small text-muted">
+           Protect your account with 2FA
+          </div>
+         </div>
+         <div class="card-body">
+          <!-- 2FA Toggle Row -->
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+           <div>
+            <div class="fw-semibold">
+             Two-Factor Authentication
+            </div>
+            <div class="text-muted small">
+             Add an extra layer of security to your account. Requires a code from your authenticator app on sign-in.
+            </div>
+           </div>
+           <div class="d-flex align-items-center gap-3">
+            <span class="badge rounded-pill bg-secondary" id="twofaStatus">
+             Disabled
+            </span>
+            <div class="form-check form-switch m-0">
+             <input class="form-check-input" id="twofaSwitch" role="switch" type="checkbox"/>
+             <label class="form-check-label" for="twofaSwitch">
+              Enable
+             </label>
+            </div>
+           </div>
+          </div>
+          <hr class="my-4"/>
+          <!-- Tips -->
+          <div class="alert alert-info d-flex align-items-start gap-2">
+           <i class="fa-solid fa-circle-info mt-1">
+           </i>
+           <div>
+            <div class="fw-semibold">
+             Tip
+            </div>
+            Use Google Authenticator, Authy, or 1Password to scan the QR code. For demo, a 6-digit code of
+            <code>
+             123456
+            </code>
+            will succeed.
+           </div>
+          </div>
+         </div>
+        </div>
+        <!-- Recent Security Activity Table -->
+        <div class="card app-card mt-4">
+         <div class="card-header">
+          <div class="d-flex align-items-center gap-2">
+           <i class="fa-solid fa-list-check text-primary">
+           </i>
+           <h3 class="h6 m-0">
+            Recent Security Activity
+           </h3>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+           <div class="input-group input-group-sm" style="width: 260px;">
+            <span class="input-group-text bg-white">
+             <i class="fa-solid fa-magnifying-glass">
+             </i>
+            </span>
+            <input class="form-control" id="activitySearch" placeholder="Search device, IP, action..." type="search"/>
+           </div>
+           <select class="form-select form-select-sm" id="resultFilter" style="width: 160px;">
+            <option value="">
+             All Results
+            </option>
+            <option value="Success">
+             2FA Success
+            </option>
+            <option value="Failed">
+             2FA Failed
+            </option>
+            <option value="Challenge">
+             2FA Challenge
+            </option>
+            <option value="N/A">
+             N/A
+            </option>
+           </select>
+          </div>
+         </div>
+         <div class="card-body p-0">
+          <div class="table-responsive">
+           <table class="table table-theme mb-0" id="activityTable">
+            <thead>
+             <tr>
+              <th class="sortable" data-key="date">
+               Date
+              </th>
+              <th class="sortable" data-key="action">
+               Action
+              </th>
+              <th class="sortable" data-key="result">
+               2FA Result
+              </th>
+              <th class="sortable" data-key="device">
+               Device
+              </th>
+              <th class="sortable" data-key="ip">
+               IP
+              </th>
+              <th>
+               Details
+              </th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+              <td data-key="date" data-value="2026-03-12T09:14:00Z">
+               Mar 12, 2026 09:14
+              </td>
+              <td data-key="action">
+               Login
+              </td>
+              <td data-key="result">
+               <span class="badge-soft success">
+                2FA Success
+               </span>
+              </td>
+              <td data-key="device">
+               Chrome on macOS
+              </td>
+              <td data-key="ip">
+               192.168.1.20
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+             <tr>
+              <td data-key="date" data-value="2026-03-11T22:47:00Z">
+               Mar 11, 2026 22:47
+              </td>
+              <td data-key="action">
+               Login
+              </td>
+              <td data-key="result">
+               <span class="badge-soft error">
+                2FA Failed
+               </span>
+              </td>
+              <td data-key="device">
+               Safari on iOS
+              </td>
+              <td data-key="ip">
+               66.102.7.1
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+             <tr>
+              <td data-key="date" data-value="2026-03-10T17:03:00Z">
+               Mar 10, 2026 17:03
+              </td>
+              <td data-key="action">
+               Login
+              </td>
+              <td data-key="result">
+               <span class="badge-soft success">
+                2FA Success
+               </span>
+              </td>
+              <td data-key="device">
+               Edge on Windows
+              </td>
+              <td data-key="ip">
+               172.16.2.14
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+             <tr>
+              <td data-key="date" data-value="2026-03-09T08:39:00Z">
+               Mar 9, 2026 08:39
+              </td>
+              <td data-key="action">
+               Password Change
+              </td>
+              <td data-key="result">
+               <span class="badge-soft info">
+                N/A
+               </span>
+              </td>
+              <td data-key="device">
+               Chrome on Windows
+              </td>
+              <td data-key="ip">
+               203.0.113.10
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+             <tr>
+              <td data-key="date" data-value="2026-03-08T12:19:00Z">
+               Mar 8, 2026 12:19
+              </td>
+              <td data-key="action">
+               Login
+              </td>
+              <td data-key="result">
+               <span class="badge-soft success">
+                2FA Success
+               </span>
+              </td>
+              <td data-key="device">
+               Firefox on Ubuntu
+              </td>
+              <td data-key="ip">
+               198.51.100.22
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+             <tr>
+              <td data-key="date" data-value="2026-03-07T23:58:00Z">
+               Mar 7, 2026 23:58
+              </td>
+              <td data-key="action">
+               Login
+              </td>
+              <td data-key="result">
+               <span class="badge-soft warning">
+                2FA Challenge
+               </span>
+              </td>
+              <td data-key="device">
+               Safari on macOS
+              </td>
+              <td data-key="ip">
+               64.233.160.2
+              </td>
+              <td>
+               <button class="btn btn-sm btn-light">
+                View
+               </button>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+         </div>
+         <div class="card-footer d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div class="small text-muted" id="paginationInfo">
+           Showing 1–6 of 6
+          </div>
+          <nav>
+           <ul class="pagination pagination-sm mb-0">
+            <li class="page-item disabled">
+             <span class="page-link">
+              Previous
+             </span>
+            </li>
+            <li class="page-item active">
+             <span class="page-link">
+              1
+             </span>
+            </li>
+            <li class="page-item disabled">
+             <span class="page-link">
+              Next
+             </span>
+            </li>
+           </ul>
+          </nav>
+         </div>
+        </div>
+       </section>
+       <!-- Insight/Chart Section -->
+       <section class="col-12 col-xxl-5">
+        <div class="card app-card" id="chartCard">
+         <div class="card-header">
+          <div class="d-flex align-items-center gap-2">
+           <i class="fa-solid fa-chart-column text-secondary">
+           </i>
+           <h3 class="h6 m-0">
+            Weekly Login Attempts
+           </h3>
+          </div>
+          <div class="text-muted small">
+           Last 7 days
+          </div>
+         </div>
+         <div class="card-body">
+          <div class="skeleton" id="chartSkeleton" style="height:200px;">
+          </div>
+          <canvas class="d-none" height="220" id="loginChart">
+          </canvas>
+         </div>
+        </div>
+        <!-- Account Management Section -->
+        <section class="card app-card mt-4 border border-danger" id="account">
+         <div class="card-header">
+          <div class="d-flex align-items-center gap-2">
+           <i class="fa-solid fa-triangle-exclamation text-danger">
+           </i>
+           <h2 class="h6 m-0">
+            Account Management
+           </h2>
+          </div>
+          <span class="badge bg-danger-subtle text-danger">
+           High Risk Area
+          </span>
+         </div>
+         <div class="card-body">
+          <p class="mb-3">
+           Deleting your account will permanently erase all your data including chat logs and mood entries. This action cannot be undone.
+          </p>
+          <button class="btn btn-danger" id="deleteAccountBtn">
+           <i class="fa-solid fa-user-slash me-2">
+           </i>
+           Delete My Account
+          </button>
+         </div>
+        </section>
+       </section>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <!-- Toasts Container -->
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: var(--z-toast);">
+   <div aria-atomic="true" aria-live="assertive" class="toast align-items-center text-bg-primary border-0" id="appToast" role="alert">
+    <div class="d-flex">
+     <div class="toast-body" id="toastMessage">
+      Action completed
+     </div>
+     <button aria-label="Close" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button">
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Authenticated Footer -->
+  <footer class="border-top bg-light mt-auto">
+   <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+    <div class="d-flex align-items-center gap-2">
+     <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbotlogo/40/40';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:20px"/>
+     <small class="text-muted">
+      © 2026 MindfulBot
+     </small>
+    </div>
+    <ul class="nav small align-items-center">
+     <li class="nav-item me-2 d-none d-md-inline">
+      <a class="btn btn-outline-secondary btn-sm" href="./chat_page.html">
+       <i class="fa-solid fa-plus me-1">
+       </i>
+       New Chat
+      </a>
+     </li>
+     <li class="nav-item me-3 d-none d-md-inline">
+      <a class="btn btn-sm" href="./user_dashboard.html#mood" style="background-color:#50C878;color:#fff;">
+       <i class="fa-solid fa-face-smile me-1">
+       </i>
+       Log Mood
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#terms">
+       Terms
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#privacy">
+       Privacy
+      </a>
+     </li>
+    </ul>
+   </div>
+  </footer>
+  <!-- Bootstrap JS -->
+  <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+   // Brand font on this page
+document.documentElement.style.setProperty('--font-sans', '\'Poppins\', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"');
+
+// Bootstrap helpers
+const toastEl = document.getElementById('appToast');
+const toast = toastEl ? new bootstrap.Toast(toastEl, {
+    delay: 2500
+}) : null;
+
+function showToast(message, variant = 'primary') {
+    if (!toastEl) return;
+    const body = document.getElementById('toastMessage');
+    toastEl.classList.remove('text-bg-primary', 'text-bg-success', 'text-bg-danger', 'text-bg-info', 'text-bg-warning');
+    toastEl.classList.add('text-bg-' + variant);
+    body.textContent = message;
+    toast.show();
+}
+
+// Mock initial state fetch
+let is2FAEnabled = false; // default, will be updated after "fetch"
+
+const twofaSwitch = document.getElementById('twofaSwitch');
+const twofaStatus = document.getElementById('twofaStatus');
+
+function update2FAUI() {
+    if (!twofaSwitch || !twofaStatus) return;
+    twofaSwitch.checked = is2FAEnabled;
+    twofaStatus.textContent = is2FAEnabled ? 'Enabled' : 'Disabled';
+    twofaStatus.classList.toggle('bg-secondary', !is2FAEnabled);
+    twofaStatus.classList.toggle('bg-success', is2FAEnabled);
+}
+
+// Simulate loading states for chart
+function initChart() {
+    const ctx = document.getElementById('loginChart');
+    if (!ctx) return;
+    const styles = getComputedStyle(document.documentElement);
+    const primary = styles.getPropertyValue('--color-primary').trim() || '#0000FF';
+    const info = styles.getPropertyValue('--color-info').trim() || '#0099D2';
+
+    const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 220);
+    gradient.addColorStop(0, primary + '33'); // 20% alpha
+    gradient.addColorStop(1, primary + '00');
+
+    const data = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+            label: '2FA Success',
+            data: [10, 12, 9, 14, 11, 6, 7],
+            borderColor: primary,
+            backgroundColor: gradient,
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3
+        }, {
+            label: '2FA Failed',
+            data: [2, 1, 1, 3, 2, 4, 1],
+            borderColor: info,
+            backgroundColor: info + '22',
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3
+        }]
+    };
+    new Chart(ctx, {
+        type: 'line',
+        data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 2FA Handlers using SweetAlert2
+async function handleEnable2FA() {
+    // Mock fetch QR + setup key
+    const setupKey = 'JBSWY3DPEHPK3PXP';
+    const username = 'username@example.com';
+    const otpauth = encodeURIComponent(`otpauth://totp/MindfulBot:${username}?secret=${setupKey}&issuer=MindfulBot`);
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${otpauth}`;
+
+    const swalHtml = `
+        <div class="text-start">
+          <p class="mb-2">Scan this QR code with your authenticator app, or enter the setup key manually.</p>
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="${qrUrl}" alt="2FA QR" width="180" height="180" onerror="this.onerror=null;this.src='https://picsum.photos/seed/qr/180/180';" class="border rounded p-1 bg-white">
+            <div>
+              <div class="small text-muted">Setup Key</div>
+              <div class="fw-bold user-select-all">${setupKey}</div>
+              <div class="small text-muted mt-2">Issuer: MindfulBot</div>
+            </div>
+          </div>
+          <label class="form-label">Enter 6-digit code</label>
+          <input type="text" id="otpInput" class="form-control" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+          <div class="form-text">For demo, use 123456 to verify successfully.</div>
+        </div>`;
+
+    await Swal.fire({
+        title: 'Set up Two-Factor Authentication',
+        html: swalHtml,
+        showCancelButton: true,
+        confirmButtonText: 'Verify',
+        cancelButtonText: 'Cancel',
+        allowOutsideClick: false,
+        didOpen: () => {
+            const otp = Swal.getHtmlContainer().querySelector('#otpInput');
+            const confirmBtn = Swal.getConfirmButton();
+            confirmBtn.disabled = true;
+            otp.addEventListener('input', () => {
+                confirmBtn.disabled = !(otp.value && otp.value.trim().length === 6);
+            });
+        },
+        preConfirm: async () => {
+            const otp = Swal.getHtmlContainer().querySelector('#otpInput').value.trim();
+            if (otp.length !== 6) {
+                Swal.showValidationMessage('Please enter a 6-digit code');
+                return false;
+            }
+            // Mock API latency and validation
+            await new Promise(r => setTimeout(r, 900));
+            if (otp !== '123456') {
+                throw new Error('Verification code is incorrect.');
+            }
+            return true;
+        }
+    }).then((res) => {
+        if (res.isConfirmed) {
+            is2FAEnabled = true;
+            update2FAUI();
+            showToast('Two-Factor Authentication enabled', 'success');
+        } else {
+            twofaSwitch.checked = false;
+        }
+    }).catch(() => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Verification failed',
+            text: 'Please try again.'
+        });
+        twofaSwitch.checked = false;
+    });
+}
+
+async function handleDisable2FA() {
+    await Swal.fire({
+        title: 'Disable Two-Factor Authentication',
+        text: 'For security, please confirm your password to disable 2FA.',
+        input: 'password',
+        inputPlaceholder: 'Enter your password',
+        inputAttributes: {
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Disable',
+        confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--color-error') || '#CD2026',
+        preConfirm: async (pwd) => {
+            if (!pwd) {
+                Swal.showValidationMessage('Password is required');
+                return false;
+            }
+            await new Promise(r => setTimeout(r, 900));
+            if (pwd !== 'Password123!') {
+                throw new Error('Incorrect password.');
+            }
+            return true;
+        }
+    }).then((res) => {
+        if (res.isConfirmed) {
+            is2FAEnabled = false;
+            update2FAUI();
+            showToast('Two-Factor Authentication disabled', 'warning');
+        } else {
+            twofaSwitch.checked = true;
+        }
+    }).catch(() => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Unable to disable',
+            text: 'Password verification failed.'
+        });
+        twofaSwitch.checked = true;
+    });
+}
+
+// Delete account
+const deleteBtn = document.getElementById('deleteAccountBtn');
+deleteBtn?.addEventListener('click', async () => {
+    const phrase = "delete my account";
+    await Swal.fire({
+        icon: 'warning',
+        title: 'Are you absolutely sure?',
+        html: `<p class="mb-2">This action is irreversible and will permanently delete all your data (chat logs, mood entries).</p>
+               <div class="mb-2 small text-muted">Type <code>${phrase}</code> to confirm.</div>`,
+        input: 'text',
+        inputPlaceholder: phrase,
+        inputAttributes: {
+            autocapitalize: 'off',
+            spellcheck: 'false'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Confirm Deletion',
+        confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--color-error') || '#CD2026',
+        preConfirm: async (val) => {
+            if ((val || '').toLowerCase().trim() !== phrase) {
+                Swal.showValidationMessage('Please type the exact phrase to proceed');
+                return false;
+            }
+            await new Promise(r => setTimeout(r, 1000));
+            // Mock success
+            return true;
+        }
+    }).then((res) => {
+        if (res.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Account deleted',
+                text: 'You will be redirected to the login page.'
+            }).then(() => {
+                window.location.href = './login_page.html';
+            });
+        }
+    });
+});
+
+// Toggle events
+twofaSwitch?.addEventListener('change', (e) => {
+    const checked = e.target.checked;
+    if (checked && !is2FAEnabled) {
+        // revert until completed
+        e.target.checked = false;
+        handleEnable2FA();
+    } else if (!checked && is2FAEnabled) {
+        e.target.checked = true;
+        handleDisable2FA();
+    }
+});
+
+// Sorting and filtering for the activity table
+(function() {
+    const table = document.getElementById('activityTable');
+    if (!table) return;
+    const tbody = table.querySelector('tbody');
+    let sortState = {
+        key: 'date',
+        dir: 'desc'
+    };
+
+    function getCellValue(tr, key) {
+        if (key === 'date') {
+            const val = tr.querySelector('[data-key="date"]').getAttribute('data-value');
+            return new Date(val).getTime();
+        }
+        if (key === 'result') {
+            const text = tr.querySelector('[data-key="result"]').innerText.trim();
+            return text;
+        }
+        const cell = tr.querySelector(`[data-key="${key}"]`);
+        return cell ? cell.textContent.trim() : '';
+    }
+
+    function applyFilters() {
+        const q = (document.getElementById('activitySearch').value || '').toLowerCase();
+        const filter = document.getElementById('resultFilter').value;
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.forEach(r => {
+            const text = r.innerText.toLowerCase();
+            const resultText = r.querySelector('[data-key="result"]').innerText;
+            const matchesText = !q || text.includes(q);
+            const matchesFilter = !filter || resultText.includes(filter);
+            r.style.display = (matchesText && matchesFilter) ? '' : 'none';
+        });
+        // Update pagination text (simple, since no real pagination)
+        const visible = rows.filter(r => r.style.display !== 'none').length;
+        document.getElementById('paginationInfo').textContent = `Showing ${visible} of ${rows.length}`;
+    }
+
+    function sortBy(key) {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const dir = (sortState.key === key && sortState.dir === 'asc') ? 'desc' : 'asc';
+        rows.sort((a, b) => {
+            const av = getCellValue(a, key);
+            const bv = getCellValue(b, key);
+            if (av < bv) return dir === 'asc' ? -1 : 1;
+            if (av > bv) return dir === 'asc' ? 1 : -1;
+            return 0;
+        });
+        rows.forEach(r => tbody.appendChild(r));
+        sortState = {
+            key,
+            dir
+        };
+        // Update header indicators
+        table.querySelectorAll('th.sortable').forEach(th => th.classList.remove('sorted-asc', 'sorted-desc'));
+        const active = table.querySelector(`th.sortable[data-key="${key}"]`);
+        active?.classList.add(dir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        applyFilters();
+    }
+
+    table.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => sortBy(th.getAttribute('data-key'))));
+    document.getElementById('activitySearch').addEventListener('input', applyFilters);
+    document.getElementById('resultFilter').addEventListener('change', applyFilters);
+
+    // Initial sort by date desc
+    sortBy('date');
+})();
+
+// Initialize tooltips (if any)
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+// Simulate initial fetch and chart loading
+window.addEventListener('DOMContentLoaded', () => {
+    // Mock fetch 2FA status
+    setTimeout(() => {
+        is2FAEnabled = false; // fetched from API in real app
+        update2FAUI();
+    }, 500);
+
+    // Chart loading
+    setTimeout(() => {
+        document.getElementById('chartSkeleton')?.classList.add('d-none');
+        document.getElementById('loginChart')?.classList.remove('d-none');
+        initChart();
+    }, 800);
+});
+  </script>
+ </body>
+</html>

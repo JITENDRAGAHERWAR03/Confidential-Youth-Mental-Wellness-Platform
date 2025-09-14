@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MindfulBot — Login
+  </title>
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Bootstrap 5 CSS -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+  <!-- Font Awesome 6 -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Sl1pS4d5JzC8Hk9dY+2oZ6q2qf3C5b4WwQO9bo0g1o1a/1O0o0zjQ4oQ6Gz5kz0Y8+9rU2GJ/2x8XWb8q7t3gw==" referrerpolicy="no-referrer" rel="stylesheet">
+   <!-- Site Theme CSS -->
+   <link href="style.css" rel="stylesheet">
+    <!-- Page-specific CSS -->
+    <link href="login_page.css" rel="stylesheet"/>
+   </link>
+  </link>
+ </head>
+ <body>
+  <!-- Header (Public/Guest) - Sidebar intentionally NOT included on Login Page -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+   <div class="container-fluid">
+    <!-- Removed offcanvas trigger as sidebar is not used on this page -->
+    <a class="navbar-brand d-flex align-items-center" href="./home_page.html">
+     <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbot/56/56';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:28px"/>
+     <span class="fw-bold">
+      MindfulBot
+     </span>
+    </a>
+    <button aria-controls="navbarGuest" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarGuest" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarGuest">
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+       <a class="nav-link" href="./home_page.html">
+        Home
+       </a>
+      </li>
+     </ul>
+     <div class="d-flex align-items-center gap-2">
+      <a class="btn btn-outline-primary" href="./login_page.html">
+       Log In
+      </a>
+      <a class="btn" href="./registration_page.html" style="background-color:#50C878; color:#fff;">
+       Sign Up Free
+      </a>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <!-- Main Content -->
+  <main>
+   <div class="container py-4 py-md-5">
+    <div class="row justify-content-center align-items-center min-vh-75">
+     <div class="col-12 col-md-8 col-lg-5">
+      <section class="login-form-container">
+       <div class="d-flex align-items-center gap-2 mb-3">
+        <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindbot/64/64';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:32px"/>
+        <h1 class="page-title mb-0">
+         Welcome back
+        </h1>
+       </div>
+       <p class="text-muted mb-4">
+        Log in to your account to access your dashboard, chats, and settings.
+       </p>
+       <!-- Inline feedback area -->
+       <div aria-live="assertive" class="alert alert-danger d-none" id="errorArea" role="alert">
+       </div>
+       <!-- Login Form -->
+       <form id="loginForm" novalidate="">
+        <!-- CredentialInputSection -->
+        <div class="mb-3">
+         <label class="form-label" for="username">
+          Username
+         </label>
+         <input aria-label="Username" class="form-control" id="username" name="username" placeholder="Username" required="" type="text"/>
+         <div class="invalid-feedback">
+          Please enter your username.
+         </div>
+        </div>
+        <div class="mb-2 position-relative">
+         <label class="form-label" for="password">
+          Password
+         </label>
+         <div class="input-group">
+          <input aria-label="Password" class="form-control" id="password" name="password" placeholder="Password" required="" type="password"/>
+          <button aria-label="Show password" class="btn btn-light toggle-visibility-icon" id="togglePassword" type="button">
+           <i class="fa-regular fa-eye" id="togglePasswordIcon">
+           </i>
+          </button>
+          <div class="invalid-feedback">
+           Please enter your password.
+          </div>
+         </div>
+        </div>
+        <!-- TwoFactorAuthSection (hidden until needed) -->
+        <div aria-hidden="true" class="mb-3 d-none" id="twoFactorSection">
+         <label class="form-label" for="twoFactorCode">
+          Two-Factor Authentication Code
+         </label>
+         <input aria-label="Two-Factor Authentication Code" class="form-control" id="twoFactorCode" inputmode="numeric" maxlength="6" name="twoFactorCode" pattern="\d{6}" placeholder="6-digit code" type="text"/>
+         <div class="form-text">
+          Open your authenticator app and enter the 6-digit code.
+         </div>
+         <div class="invalid-feedback">
+          Enter a valid 6-digit code.
+         </div>
+        </div>
+        <!-- ActionSection -->
+        <div class="d-grid gap-2 mt-3">
+         <button class="btn btn-primary" id="loginBtn" type="submit">
+          <span aria-hidden="true" class="spinner-border spinner-border-sm me-2 d-none" id="loginSpinner" role="status">
+          </span>
+          <span id="loginBtnLabel">
+           Log In
+          </span>
+         </button>
+        </div>
+        <!-- NavigationLinkSection -->
+        <div class="mt-3 text-center">
+         <small class="text-muted">
+          Don't have an account?
+          <a href="./registration_page.html">
+           Sign Up
+          </a>
+         </small>
+        </div>
+       </form>
+      </section>
+      <!-- Sample Credentials (for testing) -->
+      <section class="card mt-4">
+       <div class="card-header">
+        <div class="widget-title">
+         Test Credentials (for Demo)
+        </div>
+       </div>
+       <div class="card-body">
+        <p class="text-muted mb-3">
+         Use any of the following accounts to test the login flow. Some roles require 2FA.
+        </p>
+        <div class="table-responsive">
+         <table class="table table-sm table-theme align-middle mb-0">
+          <thead>
+           <tr>
+            <th>
+             Username
+            </th>
+            <th>
+             Password
+            </th>
+            <th>
+             Role
+            </th>
+            <th>
+             Requires 2FA
+            </th>
+            <th>
+             2FA Code
+            </th>
+            <th>
+             Redirect Page
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <code>
+              admin
+             </code>
+            </td>
+            <td>
+             <code>
+              Admin@123
+             </code>
+            </td>
+            <td>
+             Admin
+            </td>
+            <td>
+             <span class="badge-soft warning">
+              Yes
+             </span>
+            </td>
+            <td>
+             <code>
+              246810
+             </code>
+            </td>
+            <td>
+             <a href="./user_dashboard.html">
+              user_dashboard
+             </a>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <code>
+              support
+             </code>
+            </td>
+            <td>
+             <code>
+              Support@123
+             </code>
+            </td>
+            <td>
+             Support
+            </td>
+            <td>
+             <span class="badge-soft success">
+              No
+             </span>
+            </td>
+            <td>
+             —
+            </td>
+            <td>
+             <a href="./settings_page.html">
+              settings_page
+             </a>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <code>
+              community
+             </code>
+            </td>
+            <td>
+             <code>
+              Community@123
+             </code>
+            </td>
+            <td>
+             Community Manager
+            </td>
+            <td>
+             <span class="badge-soft success">
+              No
+             </span>
+            </td>
+            <td>
+             —
+            </td>
+            <td>
+             <a href="./chat_page.html">
+              chat_page
+             </a>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <code>
+              analyst
+             </code>
+            </td>
+            <td>
+             <code>
+              Analyst@123
+             </code>
+            </td>
+            <td>
+             Analyst
+            </td>
+            <td>
+             <span class="badge-soft success">
+              No
+             </span>
+            </td>
+            <td>
+             —
+            </td>
+            <td>
+             <a href="./feedback_page.html">
+              feedback_page
+             </a>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <code>
+              member
+             </code>
+            </td>
+            <td>
+             <code>
+              Member@123
+             </code>
+            </td>
+            <td>
+             Member
+            </td>
+            <td>
+             <span class="badge-soft warning">
+              Yes
+             </span>
+            </td>
+            <td>
+             <code>
+              654321
+             </code>
+            </td>
+            <td>
+             <a href="./user_dashboard.html">
+              user_dashboard
+             </a>
+            </td>
+           </tr>
+           <tr>
+            <td>
+             <code>
+              viewer
+             </code>
+            </td>
+            <td>
+             <code>
+              Viewer@123
+             </code>
+            </td>
+            <td>
+             Viewer
+            </td>
+            <td>
+             <span class="badge-soft success">
+              No
+             </span>
+            </td>
+            <td>
+             —
+            </td>
+            <td>
+             <a href="./home_page.html">
+              home_page
+             </a>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+  </main>
+  <!-- Footer (Public/Guest) -->
+  <footer class="border-top bg-light mt-auto">
+   <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+    <div class="d-flex align-items-center gap-2">
+     <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbotfooter/40/40';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:20px"/>
+     <small class="text-muted">
+      © 2026 MindfulBot
+     </small>
+    </div>
+    <ul class="nav small">
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#terms">
+       Terms
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#privacy">
+       Privacy
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="./login_page.html">
+       <i class="fa-solid fa-right-to-bracket me-1">
+       </i>
+       Login
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="./registration_page.html">
+       <i class="fa-solid fa-user-plus me-1">
+       </i>
+       Sign Up
+      </a>
+     </li>
+    </ul>
+   </div>
+  </footer>
+  <!-- SweetAlert2 -->
+  <script crossorigin="anonymous" integrity="sha256-XVAqgEo2M3bE3taYvX3HCFqkNQzbB8L6g3YpN1aW4IQ=" src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js">
+  </script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <!-- Page Script: Login Logic, Validation, 2FA Flow -->
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('loginForm');
+    const usernameEl = document.getElementById('username');
+    const passwordEl = document.getElementById('password');
+    const twoFASection = document.getElementById('twoFactorSection');
+    const twoFAInput = document.getElementById('twoFactorCode');
+    const errorArea = document.getElementById('errorArea');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginSpinner = document.getElementById('loginSpinner');
+    const loginBtnLabel = document.getElementById('loginBtnLabel');
+    const togglePassword = document.getElementById('togglePassword');
+    const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+    // Mock users database
+    const users = {
+        admin: {
+            password: 'Admin@123',
+            role: 'Admin',
+            redirect: './user_dashboard.html',
+            requires2FA: true,
+            code: '246810'
+        },
+        support: {
+            password: 'Support@123',
+            role: 'Support',
+            redirect: './settings_page.html',
+            requires2FA: false
+        },
+        community: {
+            password: 'Community@123',
+            role: 'Community Manager',
+            redirect: './chat_page.html',
+            requires2FA: false
+        },
+        analyst: {
+            password: 'Analyst@123',
+            role: 'Analyst',
+            redirect: './feedback_page.html',
+            requires2FA: false
+        },
+        member: {
+            password: 'Member@123',
+            role: 'Member',
+            redirect: './user_dashboard.html',
+            requires2FA: true,
+            code: '654321'
+        },
+        viewer: {
+            password: 'Viewer@123',
+            role: 'Viewer',
+            redirect: './home_page.html',
+            requires2FA: false
+        },
+    };
+
+    let currentUser = null; // holds selected user object during 2FA step
+    let isTwoFactorStep = false; // UI state flag
+
+    function showError(message) {
+        errorArea.textContent = message || '';
+        errorArea.classList.toggle('d-none', !message);
+    }
+
+    function setLoading(isLoading) {
+        loginBtn.disabled = isLoading;
+        loginSpinner.classList.toggle('d-none', !isLoading);
+    }
+
+    function goto(url) {
+        window.location.assign(url);
+    }
+
+    // Toggle password visibility
+    togglePassword.addEventListener('click', function() {
+        const isText = passwordEl.type === 'text';
+        passwordEl.type = isText ? 'password' : 'text';
+        togglePasswordIcon.classList.toggle('fa-eye');
+        togglePasswordIcon.classList.toggle('fa-eye-slash');
+        togglePassword.setAttribute('aria-label', isText ? 'Show password' : 'Hide password');
+    });
+
+    // Restrict 2FA input to digits only
+    twoFAInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 6);
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showError('');
+
+        if (!isTwoFactorStep) {
+            // Validate basic fields
+            const username = (usernameEl.value || '').trim();
+            const password = (passwordEl.value || '').trim();
+
+            usernameEl.classList.toggle('is-invalid', username === '');
+            passwordEl.classList.toggle('is-invalid', password === '');
+
+            if (!username || !password) {
+                showError('Please fill in both username and password.');
+                return;
+            }
+
+            const user = users[username];
+            if (!user || user.password !== password) {
+                showError('Invalid credentials. Check your username or password.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login failed',
+                    text: 'Invalid username or password.'
+                });
+                return;
+            }
+
+            // Valid credentials
+            currentUser = user;
+            if (user.requires2FA) {
+                isTwoFactorStep = true;
+                usernameEl.setAttribute('disabled', 'disabled');
+                passwordEl.setAttribute('disabled', 'disabled');
+                twoFASection.classList.remove('d-none');
+                twoFASection.setAttribute('aria-hidden', 'false');
+                twoFAInput.focus();
+                loginBtnLabel.textContent = 'Verify & Log In';
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Two-Factor Verification Required',
+                    text: 'Please enter the 6-digit code from your authenticator app.',
+                    confirmButtonText: 'OK',
+                });
+            } else {
+                // No 2FA, log in directly
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome back!',
+                        text: `${username} (${user.role}) logged in successfully. Redirecting...`,
+                        timer: 1400,
+                        showConfirmButton: false,
+                    });
+                    setTimeout(() => goto(user.redirect), 1200);
+                }, 600);
+            }
+        } else {
+            // 2FA step
+            const code = (twoFAInput.value || '').trim();
+            const isValidCode = /^\d{6}$/.test(code);
+            twoFAInput.classList.toggle('is-invalid', !isValidCode);
+            if (!isValidCode) {
+                showError('Enter a valid 6-digit authentication code.');
+                return;
+            }
+            if (currentUser && code === currentUser.code) {
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: '2FA Verified',
+                        text: 'Login successful. Redirecting to your page...',
+                        timer: 1500,
+                        showConfirmButton: false,
+                    });
+                    setTimeout(() => goto(currentUser.redirect), 1200);
+                }, 600);
+            } else {
+                showError('Invalid 2FA code. Please try again.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid 2FA code',
+                    text: 'Please check your authenticator app and re-enter the code.'
+                });
+            }
+        }
+    });
+});
+  </script>
+ </body>
+</html>

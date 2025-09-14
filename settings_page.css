@@ -1,0 +1,55 @@
+/* settings_page.css - Page-specific styles for Settings */
+/* Use brand typeface on this page while respecting theme fallbacks */
+body {
+    font-family: "Poppins", var(--font-sans)
+    }
+/* Adjust page header spacing and badges */
+.page-header .badge {
+    font-weight: 600
+    }
+/* Table sorting indicators */
+th.sortable {
+    cursor: pointer;
+    position: relative;
+    user-select: none
+    }
+th.sortable::after {
+    content: "";
+    /* fa-sort icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    opacity: 0.4;
+    margin-left: 0.5rem;
+    font-size: 0.85em
+    }
+th.sortable.sorted-asc::after {
+    content: "";
+    opacity: 0.9
+    }
+/* fa-sort-up */
+th.sortable.sorted-desc::after {
+    content: "";
+    opacity: 0.9
+    }
+/* fa-sort-down */
+/* Danger area accent */
+#account.card {
+    border-width: 2px !important
+    }
+/* Improve spacing for switch row on small screens */
+@media (max-width: 575.98px) {
+    #security .form-check.form-switch {
+        align-self: flex-start
+        }
+    }
+/* Toast spacing for anchored header */
+@media (min-width: 576px) {
+    .toast {
+        margin-top: 64px
+        }
+    }
+/* Chart canvas height within card */
+#loginChart {
+    width: 100% !important;
+    height: 220px !important
+    }

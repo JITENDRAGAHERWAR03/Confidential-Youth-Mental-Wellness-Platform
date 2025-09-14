@@ -1,0 +1,75 @@
+/* feedback_page.css - Page specific styles for Feedback Page (avoid duplication with style.css) */
+html, body {
+    font-family: var(--brand-font)
+    }
+/* Keep main content from stretching too wide and ensure comfortable reading width */
+@media (min-width: 992px) {
+    main .container {
+        max-width: 1080px
+        }
+    }
+/* Text truncation for table excerpts (2 lines) */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden
+    }
+/* Sortable header indicator hover */
+th.sortable:hover {
+    background: var(--neutral-soft)
+    }
+/* Fine-tune alert spacing */
+#submissionAlert {
+    margin-bottom: 1rem
+    }
+/* Card headers align */
+.card-header .widget-title {
+    font-weight: 600
+    }
+/* Make the chart container a consistent height */
+#feedbackChart {
+    width: 100%;
+    height: 220px !important
+    }
+/* Better focus ring for inputs on this page, reusing theme variable when present */
+#feedbackForm .form-control:focus, #feedbackForm .form-select:focus {
+    box-shadow: 0 0 0 3px rgba(0, 0, 255, 0.15)
+    }
+/* Ensure footer sticks to bottom when content is short */
+html {
+    min-height: 100%
+    }
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+    }
+footer {
+    margin-top: auto
+    }
+/* Align the main layout with sidebar without shifting header */
+body > .d-flex {
+    min-height: calc(100vh - 56px)
+    }
+/* Improve small screen spacing inside main container */
+@media (max-width: 575.98px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem
+        }
+    }
+/* Status badge color mapping enhancements (uses existing soft styles) */
+.badge-soft.success {
+    background: var(--success-soft);
+    color: #0d5c3d
+    }
+.badge-soft.warning {
+    background: var(--warning-soft);
+    color: #5a3f00
+    }
+.badge-soft.info {
+    background: var(--info-soft);
+    color: #005b7a
+    }

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MindfulBot • Create Your Account
+  </title>
+  <!-- Brand Typography: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Bootstrap 5 CSS -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+  <!-- Font Awesome 6 -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" referrerpolicy="no-referrer" rel="stylesheet">
+   <!-- SweetAlert2 -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+   </script>
+   <!-- Site Theme CSS -->
+   <link href="style.css" rel="stylesheet"/>
+   <!-- Page-specific CSS -->
+   <link href="registration_page.css" rel="stylesheet"/>
+  </link>
+ </head>
+ <body>
+  <div class="d-flex flex-column min-vh-100">
+   <!-- Header (Public/Guest Header Navbar) -->
+   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container-fluid">
+     <button aria-controls="offcanvasPublic" aria-label="Open menu" class="btn d-md-none me-2" data-bs-target="#offcanvasPublic" data-bs-toggle="offcanvas" type="button">
+      <i class="fa-solid fa-bars fs-5">
+      </i>
+     </button>
+     <a class="navbar-brand d-flex align-items-center" href="./home_page.html">
+      <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbot-logo/28/28';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:28px"/>
+      <span class="fw-bold">
+       MindfulBot
+      </span>
+     </a>
+     <button aria-controls="navbarGuest" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarGuest" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon">
+      </span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarGuest">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item">
+        <a aria-current="page" class="nav-link active" href="./home_page.html">
+         Home
+        </a>
+       </li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+       <a class="btn btn-outline-primary" href="./login_page.html">
+        Log In
+       </a>
+       <a class="btn" href="./registration_page.html" style="background-color:#50C878; color:#fff;">
+        Sign Up Free
+       </a>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <!-- Main Content -->
+   <main class="container flex-grow-1 d-flex align-items-center justify-content-center py-4">
+    <div class="login-form-container registration-form-container w-100">
+     <!-- Form Header -->
+     <div class="text-center mb-3">
+      <h1 class="page-title mb-1">
+       Create Your Account
+      </h1>
+      <p class="text-muted mb-0">
+       Start your journey in a safe and private space.
+      </p>
+     </div>
+     <!-- System Feedback / Notification Area -->
+     <div aria-live="polite" class="alert alert-danger d-none" id="formAlert" role="alert">
+     </div>
+     <!-- Registration Form -->
+     <form id="registrationForm" novalidate="">
+      <!-- Username -->
+      <div class="mb-3">
+       <label class="form-label" for="username">
+        Username
+       </label>
+       <div class="input-group">
+        <span class="input-group-text" id="usernameIcon">
+         <i class="fa-solid fa-user">
+         </i>
+        </span>
+        <input aria-describedby="usernameHelp usernameIcon" class="form-control" id="username" name="username" placeholder="Choose a unique username" required="" type="text"/>
+       </div>
+       <div class="form-text" id="usernameHelp">
+        3–20 characters. Letters, numbers, or underscores.
+       </div>
+       <div class="invalid-feedback" id="usernameError">
+        Please enter a valid username.
+       </div>
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+       <label class="form-label" for="password">
+        Password
+       </label>
+       <div class="input-group">
+        <span class="input-group-text" id="passwordIcon">
+         <i class="fa-solid fa-lock">
+         </i>
+        </span>
+        <input aria-describedby="passwordHelp passwordIcon" class="form-control password-input-field" id="password" name="password" placeholder="Create a strong password" required="" type="password"/>
+        <button aria-label="Toggle password visibility" class="btn btn-light" id="togglePassword" type="button">
+         <i aria-hidden="true" class="fa-solid fa-eye toggle-visibility-icon">
+         </i>
+        </button>
+       </div>
+       <div class="form-text" id="passwordHelp">
+        At least 8 characters, including uppercase, lowercase, number, and symbol.
+       </div>
+       <div class="invalid-feedback" id="passwordError">
+        Your password does not meet the requirements.
+       </div>
+       <!-- Password Strength Indicator -->
+       <div class="mt-2">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+         <small class="text-muted">
+          Password strength
+         </small>
+         <small class="fw-semibold text-muted" id="strengthLabel">
+          —
+         </small>
+        </div>
+        <div aria-hidden="true" class="progress">
+         <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar" id="passwordStrengthBar" role="progressbar" style="width: 0%">
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- Confirm Password -->
+      <div class="mb-3">
+       <label class="form-label" for="confirmPassword">
+        Confirm Password
+       </label>
+       <div class="input-group">
+        <span class="input-group-text" id="confirmIcon">
+         <i class="fa-solid fa-lock">
+         </i>
+        </span>
+        <input aria-describedby="confirmHelp confirmIcon" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required="" type="password"/>
+        <button aria-label="Toggle confirm password visibility" class="btn btn-light" id="toggleConfirm" type="button">
+         <i aria-hidden="true" class="fa-solid fa-eye toggle-visibility-icon">
+         </i>
+        </button>
+       </div>
+       <div class="form-text" id="confirmHelp">
+        Must match the password exactly.
+       </div>
+       <div class="invalid-feedback" id="confirmError">
+        Passwords do not match.
+       </div>
+      </div>
+      <!-- Actions -->
+      <div class="d-grid gap-2 mt-4">
+       <button class="btn btn-primary submit-button" id="submitBtn" type="submit">
+        <span class="btn-text">
+         Create Account
+        </span>
+        <span aria-hidden="true" class="spinner-border spinner-border-sm ms-2 d-none" id="submitSpinner" role="status">
+        </span>
+       </button>
+       <div class="text-center">
+        <a class="text-decoration-none" href="./login_page.html">
+         Already have an account? Log In
+        </a>
+       </div>
+      </div>
+      <div class="text-center mt-3 small text-muted">
+       By creating an account, you agree to our
+       <a class="text-muted" href="#terms">
+        Terms
+       </a>
+       and
+       <a class="text-muted" href="#privacy">
+        Privacy Policy
+       </a>
+       .
+      </div>
+     </form>
+    </div>
+   </main>
+   <!-- Footer (Public/Guest Footer) -->
+   <footer class="border-top bg-light mt-auto">
+    <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+     <div class="d-flex align-items-center gap-2">
+      <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbot-footer/20/20';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:20px"/>
+      <small class="text-muted">
+       © 2026 MindfulBot
+      </small>
+     </div>
+     <ul class="nav small">
+      <li class="nav-item">
+       <a class="nav-link text-muted" href="#terms">
+        Terms
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-muted" href="#privacy">
+        Privacy
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-muted" href="./login_page.html">
+        <i class="fa-solid fa-right-to-bracket me-1">
+        </i>
+        Login
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-muted" href="./registration_page.html">
+        <i class="fa-solid fa-user-plus me-1">
+        </i>
+        Sign Up
+       </a>
+      </li>
+     </ul>
+    </div>
+   </footer>
+  </div>
+  <!-- Bootstrap 5 JS (Bundle includes Popper) -->
+  <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+   (function() {
+    const form = document.getElementById('registrationForm');
+    const formAlert = document.getElementById('formAlert');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const passwordStrengthBar = document.getElementById('passwordStrengthBar');
+    const strengthLabel = document.getElementById('strengthLabel');
+
+    const togglePassword = document.getElementById('togglePassword');
+    const toggleConfirm = document.getElementById('toggleConfirm');
+
+    let isLoading = false;
+
+    const setLoading = (loading) => {
+        isLoading = loading;
+        if (loading) {
+            submitSpinner.classList.remove('d-none');
+            submitBtn.setAttribute('disabled', 'true');
+        } else {
+            submitSpinner.classList.add('d-none');
+            maybeEnableSubmit();
+        }
+    };
+
+    // Validation helpers
+    function validateUsername(value) {
+        if (!value) return 'Username is required.';
+        const re = /^[a-zA-Z0-9_]{3,20}$/;
+        if (!re.test(value)) return '3–20 chars. Letters, numbers, or underscores only.';
+        return '';
+    }
+
+    function validatePassword(value) {
+        if (!value) return 'Password is required.';
+        const rules = [
+            /.{8,}/, // min length 8
+            /[a-z]/, // lowercase
+            /[A-Z]/, // uppercase
+            /\d/, // number
+            /[^A-Za-z0-9]/ // symbol
+        ];
+        const pass = rules.every(r => r.test(value));
+        return pass ? '' : 'Must be 8+ chars with upper, lower, number, and symbol.';
+    }
+
+    function validateConfirmPassword(pw, cpw) {
+        if (!cpw) return 'Please confirm your password.';
+        if (pw !== cpw) return 'Passwords do not match.';
+        return '';
+    }
+
+    function calcStrength(value) {
+        let score = 0;
+        if (!value) return 0;
+        if (value.length >= 8) score++;
+        if (value.length >= 12) score++;
+        if (/[a-z]/.test(value)) score++;
+        if (/[A-Z]/.test(value)) score++;
+        if (/\d/.test(value)) score++;
+        if (/[^A-Za-z0-9]/.test(value)) score++;
+        // Cap score to 5 for mapping
+        return Math.min(score, 5);
+    }
+
+    function updateStrengthUI(value) {
+        const score = calcStrength(value);
+        let percent = 0;
+        let label = '—';
+        let barClass = 'bg-danger';
+        switch (score) {
+            case 0:
+            case 1:
+                percent = 20;
+                label = 'Very Weak';
+                barClass = 'bg-danger';
+                break;
+            case 2:
+                percent = 40;
+                label = 'Weak';
+                barClass = 'bg-danger';
+                break;
+            case 3:
+                percent = 60;
+                label = 'Okay';
+                barClass = 'bg-warning';
+                break;
+            case 4:
+                percent = 80;
+                label = 'Strong';
+                barClass = 'bg-info';
+                break;
+            case 5:
+                percent = 100;
+                label = 'Very Strong';
+                barClass = 'bg-success';
+                break;
+        }
+        passwordStrengthBar.style.width = percent + '%';
+        passwordStrengthBar.setAttribute('aria-valuenow', percent);
+        strengthLabel.textContent = label;
+        passwordStrengthBar.className = 'progress-bar ' + barClass;
+    }
+
+    function showFieldError(input, message) {
+        input.classList.add('is-invalid');
+        const id = input.getAttribute('id');
+        const err = document.getElementById(id + 'Error');
+        if (err) err.textContent = message;
+    }
+
+    function clearFieldError(input) {
+        input.classList.remove('is-invalid');
+        input.classList.remove('is-valid');
+    }
+
+    function setValid(input) {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+    }
+
+    function maybeEnableSubmit() {
+        if (isLoading) return;
+        const uErr = validateUsername(username.value.trim());
+        const pErr = validatePassword(password.value);
+        const cErr = validateConfirmPassword(password.value, confirmPassword.value);
+        const hasErr = !!(uErr || pErr || cErr);
+        submitBtn.toggleAttribute('disabled', hasErr);
+    }
+
+    // Realtime validation
+    username.addEventListener('input', () => {
+        const val = username.value.trim();
+        const err = validateUsername(val);
+        if (err) {
+            showFieldError(username, err);
+        } else {
+            setValid(username);
+        }
+        maybeEnableSubmit();
+    });
+
+    password.addEventListener('input', () => {
+        const err = validatePassword(password.value);
+        updateStrengthUI(password.value);
+        if (err) {
+            showFieldError(password, err);
+        } else {
+            setValid(password);
+        }
+        // Also re-validate confirm password if user changes password
+        if (confirmPassword.value) {
+            const cErr = validateConfirmPassword(password.value, confirmPassword.value);
+            if (cErr) {
+                showFieldError(confirmPassword, cErr);
+            } else {
+                setValid(confirmPassword);
+            }
+        }
+        maybeEnableSubmit();
+    });
+
+    confirmPassword.addEventListener('input', () => {
+        const err = validateConfirmPassword(password.value, confirmPassword.value);
+        if (err) {
+            showFieldError(confirmPassword, err);
+        } else {
+            setValid(confirmPassword);
+        }
+        maybeEnableSubmit();
+    });
+
+    // Toggle visibility
+    togglePassword.addEventListener('click', () => {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        togglePassword.querySelector('i').classList.toggle('fa-eye');
+        togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+    toggleConfirm.addEventListener('click', () => {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        toggleConfirm.querySelector('i').classList.toggle('fa-eye');
+        toggleConfirm.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+
+    function showFormAlert(message) {
+        formAlert.textContent = message;
+        formAlert.classList.remove('d-none');
+    }
+
+    function hideFormAlert() {
+        formAlert.classList.add('d-none');
+        formAlert.textContent = '';
+    }
+
+    // Mock existing usernames to simulate server-side uniqueness check
+    const takenUsernames = new Set(['admin', 'test', 'existinguser', 'user123']);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        hideFormAlert();
+
+        // Final validation
+        const uVal = username.value.trim();
+        const pVal = password.value;
+        const cVal = confirmPassword.value;
+
+        const uErr = validateUsername(uVal);
+        const pErr = validatePassword(pVal);
+        const cErr = validateConfirmPassword(pVal, cVal);
+
+        if (uErr || pErr || cErr) {
+            if (uErr) showFieldError(username, uErr);
+            else setValid(username);
+            if (pErr) showFieldError(password, pErr);
+            else setValid(password);
+            if (cErr) showFieldError(confirmPassword, cErr);
+            else setValid(confirmPassword);
+            showFormAlert('Please correct the highlighted fields and try again.');
+            return;
+        }
+
+        // Simulate API request
+        setLoading(true);
+        setTimeout(() => {
+            if (takenUsernames.has(uVal.toLowerCase())) {
+                setLoading(false);
+                showFieldError(username, 'This username is already taken.');
+                showFormAlert('This username is already taken. Please choose another.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Username already taken',
+                    text: 'Please choose a different username.',
+                    confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '#0000FF'
+                });
+                return;
+            }
+
+            // Success
+            setLoading(false);
+            username.classList.remove('is-invalid');
+            password.classList.remove('is-invalid');
+            confirmPassword.classList.remove('is-invalid');
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Account created! ✅',
+                text: 'Your account has been created successfully. You can now log in.',
+                confirmButtonText: 'Go to Login',
+                confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '#0000FF'
+            }).then(() => {
+                window.location.href = './login_page.html';
+            });
+        }, 1100);
+    });
+
+    // Initialize strength on load
+    updateStrengthUI('');
+    maybeEnableSubmit();
+})();
+  </script>
+ </body>
+</html>

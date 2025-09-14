@@ -1,0 +1,30 @@
+/* Login Page specific styles (login_page.css) */
+/* Use Poppins as the primary font for this page, falling back to theme sans */
+body {
+    font-family: "Poppins", var(--font-sans)
+    }
+/* Subtle elevation focus within the login container */
+.login-form-container {
+    backdrop-filter: saturate(130%) blur(2px)
+    }
+/* Align the toggle password button neatly within input group */
+#togglePassword {
+    border-color: var(--border-color)
+    }
+#togglePassword:hover {
+    background: var(--neutral-soft)
+    }
+/* Reduce top and bottom spacing on smaller screens */
+@media (max-width: 575.98px) {
+    .login-form-container {
+        padding: var(--space-4)
+        }
+    }
+/* Make the min viewport height area comfortable for centering */
+.min-vh-75 {
+    min-height: 75vh
+    }
+/* Style for inline error alert spacing */
+#errorArea {
+    margin-bottom: var(--space-3)
+    }

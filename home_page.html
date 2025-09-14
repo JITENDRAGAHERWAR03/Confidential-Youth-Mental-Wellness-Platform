@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   MindfulBot — Home
+  </title>
+  <!-- Brand Typography: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Bootstrap 5 CSS -->
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+  <!-- Font Awesome 6 -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkfDhb8I4lilrbWZ0J0C9sS4Jt0ZQcJ6J8GavQB1z0V9YxFz4Gx7Gz+DQ==" referrerpolicy="no-referrer" rel="stylesheet">
+   <!-- SweetAlert2 -->
+   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.2/dist/sweetalert2.min.css" rel="stylesheet"/>
+   <!-- Global Theme Styles -->
+   <link href="style.css" rel="stylesheet"/>
+   <!-- Page-specific Styles -->
+   <link href="HomePage.css" rel="stylesheet"/>
+  </link>
+ </head>
+ <body class="d-flex flex-column min-vh-100">
+  <!-- HeaderComponent: Public/Guest Header Navbar
+       Note: Sidebar is intentionally NOT included on the Home page to keep focus on onboarding. 
+       We include only the mobile offcanvas for small screens navigation. -->
+  <nav class="navbar navbar-expand-lg border-bottom sticky-top navbar-landing">
+   <div class="container-fluid">
+    <button aria-controls="offcanvasPublic" aria-label="Open menu" class="btn d-md-none me-2" data-bs-target="#offcanvasPublic" data-bs-toggle="offcanvas" type="button">
+     <i class="fa-solid fa-bars fs-5">
+     </i>
+    </button>
+    <a aria-label="MindfulBot Home" class="navbar-brand d-flex align-items-center" href="./home_page.html">
+     <img alt="MindfulBot" class="me-2" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mindfulbot/28/28';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:28px"/>
+     <span class="fw-bold">
+      MindfulBot
+     </span>
+    </a>
+    <button aria-controls="navbarGuest" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarGuest" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarGuest">
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+       <a aria-current="page" class="nav-link active" href="./home_page.html">
+        Home
+       </a>
+      </li>
+     </ul>
+     <div class="d-flex align-items-center gap-2">
+      <a class="btn btn-outline-primary" href="./login_page.html">
+       Log In
+      </a>
+      <a class="btn" href="./registration_page.html" style="background-color:#50C878; color:#fff;">
+       Sign Up Free
+      </a>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <!-- Offcanvas Sidebar for < md screens (mobile navigation) -->
+  <div aria-labelledby="offcanvasPublicLabel" class="offcanvas offcanvas-start" id="offcanvasPublic" tabindex="-1">
+   <div class="offcanvas-header">
+    <h5 class="offcanvas-title d-flex align-items-center gap-2" id="offcanvasPublicLabel">
+     <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mblogo/24/24';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:24px"/>
+     MindfulBot
+    </h5>
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button">
+    </button>
+   </div>
+   <div class="offcanvas-body p-0">
+    <div class="p-3 border-bottom d-flex align-items-center gap-2">
+     <div class="avatar rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px;background:#e9ecef;color:#6c757d;">
+      <i class="fa-solid fa-user">
+      </i>
+     </div>
+     <div>
+      <div class="fw-semibold">
+       Guest
+      </div>
+      <small class="text-muted">
+       Visitor
+      </small>
+     </div>
+    </div>
+    <ul class="nav nav-pills flex-column mb-auto p-3">
+     <li class="nav-item">
+      <a class="nav-link d-flex align-items-center gap-2" href="./home_page.html">
+       <i class="fa-solid fa-house">
+       </i>
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="nav-link d-flex align-items-center gap-2" href="./registration_page.html">
+       <i class="fa-solid fa-user-plus">
+       </i>
+       Sign Up
+      </a>
+     </li>
+     <li>
+      <a class="nav-link d-flex align-items-center gap-2" href="./login_page.html">
+       <i class="fa-solid fa-right-to-bracket">
+       </i>
+       Log In
+      </a>
+     </li>
+     <li class="mt-2">
+      <a aria-controls="publicLegalCollapseSm" aria-expanded="false" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#publicLegalCollapseSm" role="button">
+       <i class="fa-solid fa-shield-halved">
+       </i>
+       Privacy &amp; Legal
+      </a>
+      <div class="collapse submenu" id="publicLegalCollapseSm">
+       <ul class="nav flex-column ms-1">
+        <li>
+         <a class="nav-link" href="#privacy">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a class="nav-link d-flex align-items-center gap-2" href="#terms">
+          <i class="fa-solid fa-scale-balanced">
+          </i>
+          Terms of Use
+         </a>
+        </li>
+       </ul>
+      </div>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <main class="flex-grow-1">
+   <!-- System feedback/notification area: site status -->
+   <div class="container pt-3">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+     <i class="fa-solid fa-circle-check me-1">
+     </i>
+     All systems operational. Your conversations are private and encrypted.
+     <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button">
+     </button>
+    </div>
+   </div>
+   <!-- HeroComponent -->
+   <section class="hero-landing position-relative overflow-hidden">
+    <div class="container position-relative py-5 py-lg-6">
+     <div class="row align-items-center g-4">
+      <div class="col-12 col-lg-6 text-center text-lg-start">
+       <h1 class="display-5 fw-bold mb-3">
+        A Private Space to Explore Your Feelings.
+       </h1>
+       <p class="lead text-muted mb-4">
+        MindfulBot is a secure, empathetic AI chatbot designed for youth mental wellness. Chat confidentially, track your mood, and stay in complete control of your data.
+       </p>
+       <div class="d-flex gap-2 justify-content-center justify-content-lg-start">
+        <a class="btn btn-primary btn-lg" href="./registration_page.html">
+         Get Started - It's Free
+        </a>
+        <a class="btn btn-light btn-lg" href="./login_page.html">
+         Log In
+        </a>
+       </div>
+       <div class="d-flex align-items-center gap-3 mt-3">
+        <span class="badge-soft success">
+         <i class="fa-solid fa-user-shield me-1">
+         </i>
+         Privacy-first
+        </span>
+        <span class="badge-soft info">
+         <i class="fa-solid fa-lock me-1">
+         </i>
+         You control your data
+        </span>
+       </div>
+      </div>
+      <div class="col-12 col-lg-6 d-none d-lg-block">
+       <div class="hero-visual card border-0 shadow-0 bg-transparent">
+        <img alt="Calming abstract illustration" class="rounded-3 w-100" onerror="this.onerror=null;this.src='https://picsum.photos/id/1069/960/600';" src="https://picsum.photos/seed/mindful-hero/960/600"/>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="hero-bg-shape position-absolute top-0 start-50 translate-middle-x">
+    </div>
+   </section>
+   <!-- FeaturesComponent -->
+   <section class="py-5">
+    <div class="container">
+     <div class="text-center mb-4">
+      <h2 class="fw-bold">
+       Why choose MindfulBot?
+      </h2>
+      <p class="text-muted mb-0">
+       Thoughtfully designed to support your emotional wellbeing.
+      </p>
+     </div>
+     <div class="row g-4">
+      <!-- FeatureCardEmpatheticChat -->
+      <div class="col-12 col-md-6 col-lg-4">
+       <div class="card h-100 app-card p-2">
+        <div class="card-body">
+         <div class="feature-icon mb-3" data-bs-title="Empathetic Chat" data-bs-toggle="tooltip">
+          <i class="fa-solid fa-comments">
+          </i>
+         </div>
+         <h3 class="h5 widget-title mb-2">
+          Empathetic Chat
+         </h3>
+         <p class="mb-0">
+          Talk through your thoughts and feelings anytime in a safe, non-judgmental space with our supportive AI companion.
+         </p>
+        </div>
+       </div>
+      </div>
+      <!-- FeatureCardMoodTracking -->
+      <div class="col-12 col-md-6 col-lg-4">
+       <div class="card h-100 app-card p-2">
+        <div class="card-body">
+         <div class="feature-icon mb-3" data-bs-title="Visualize Your Mood" data-bs-toggle="tooltip">
+          <i class="fa-solid fa-chart-line">
+          </i>
+         </div>
+         <h3 class="h5 widget-title mb-2">
+          Visualize Your Mood
+         </h3>
+         <p class="mb-0">
+          Track your emotional well-being over time. Our simple dashboard helps you see patterns and understand your feelings better.
+         </p>
+        </div>
+       </div>
+      </div>
+      <!-- FeatureCardDataPrivacy -->
+      <div class="col-12 col-md-6 col-lg-4">
+       <div class="card h-100 app-card p-2">
+        <div class="card-body">
+         <div class="feature-icon mb-3" data-bs-title="Complete Privacy" data-bs-toggle="tooltip">
+          <i class="fa-solid fa-shield-halved">
+          </i>
+         </div>
+         <h3 class="h5 widget-title mb-2">
+          Complete Privacy
+         </h3>
+         <p class="mb-0">
+          Your data is yours. Hosted on a private server and never shared. You can permanently delete your entire account and all data at any time.
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- CTA strip -->
+     <div class="rounded-3 bg-primary-soft p-4 mt-4 d-flex flex-column flex-md-row align-items-center justify-content-between">
+      <div class="mb-2 mb-md-0">
+       <strong class="text-strong">
+        Ready to get started?
+       </strong>
+       <span class="text-muted ms-2">
+        Create your free account in seconds.
+       </span>
+      </div>
+      <div class="d-flex gap-2">
+       <a class="btn btn-primary" href="./registration_page.html">
+        <i class="fa-solid fa-rocket me-1">
+        </i>
+        Sign Up Free
+       </a>
+       <button class="btn btn-light" id="learnMoreToastBtn">
+        <i class="fa-regular fa-bell me-1">
+        </i>
+        Learn More
+       </button>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Trust & Legal anchors -->
+   <section class="container pb-5">
+    <div class="row g-4">
+     <div class="col-12 col-lg-6">
+      <div class="card app-card" id="privacy">
+       <div class="card-header">
+        <span class="widget-title">
+         Privacy Policy
+        </span>
+       </div>
+       <div class="card-body">
+        <p class="mb-2">
+         We collect the minimum necessary data to provide the service. You can delete your data and account at any time from Settings.
+        </p>
+        <a class="btn btn-outline-primary btn-sm" href="./registration_page.html">
+         Create an account
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="col-12 col-lg-6">
+      <div class="card app-card" id="terms">
+       <div class="card-header">
+        <span class="widget-title">
+         Terms of Use
+        </span>
+       </div>
+       <div class="card-body">
+        <p class="mb-2">
+         MindfulBot is a supportive tool, not a replacement for professional help. If you're in crisis, contact local emergency services or a trusted professional.
+        </p>
+        <a class="btn btn-light btn-sm" href="./login_page.html">
+         Log in
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <!-- FooterComponent: Public/Guest Footer -->
+  <footer class="border-top bg-light mt-auto">
+   <div class="container py-3 d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+    <div class="d-flex align-items-center gap-2">
+     <img alt="MindfulBot" onerror="this.onerror=null;this.src='https://picsum.photos/seed/mb/20/20';" src="https://dsaishared.blob.core.windows.net/uxcceleratecontainer/projects/68b724348ecfc2752de0f164/logos/logo_5003fb32-9b05-4558-8f3f-b2f88e0be49c.png" style="height:20px"/>
+     <small class="text-muted">
+      © 2026 MindfulBot
+     </small>
+    </div>
+    <ul class="nav small">
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#terms">
+       Terms
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="#privacy">
+       Privacy
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="./login_page.html">
+       <i class="fa-solid fa-right-to-bracket me-1">
+       </i>
+       Login
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link text-muted" href="./registration_page.html">
+       <i class="fa-solid fa-user-plus me-1">
+       </i>
+       Sign Up
+      </a>
+     </li>
+    </ul>
+   </div>
+  </footer>
+  <!-- Toasts Container -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+   <div aria-atomic="true" aria-live="assertive" class="toast align-items-center text-bg-light border show" id="learnMoreToast" role="alert" style="display:none;">
+    <div class="d-flex">
+     <div class="toast-body">
+      Discover how MindfulBot protects your privacy and supports your wellbeing.
+     </div>
+     <button aria-label="Close" class="btn-close me-2 m-auto" data-bs-dismiss="toast" type="button">
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Bootstrap 5 Bundle JS -->
+  <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.2/dist/sweetalert2.all.min.js">
+  </script>
+  <script>
+   // Apply scrolled state to landing navbar
+(function() {
+    const nav = document.querySelector('.navbar-landing');
+    const onScroll = () => {
+        if (window.scrollY > 10) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+})();
+
+// Enable tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+
+// SweetAlert2: Privacy consent modal on first visit
+(function() {
+    const KEY = 'mb_privacy_consent_v1';
+    const consent = localStorage.getItem(KEY);
+    if (!consent) {
+        setTimeout(() => {
+            Swal.fire({
+                title: 'We value your privacy',
+                html: '<div class="text-start">\
+                    <p>Your chats are private and encrypted. You control your data and can delete your account permanently at any time.</p>\
+                    <p class="mb-0"><small>By continuing, you agree to our <a href="#terms">Terms</a> and <a href="#privacy">Privacy Policy</a>.</small></p>\
+                  </div>',
+                icon: 'info',
+                confirmButtonText: 'I Agree',
+                showCancelButton: true,
+                cancelButtonText: 'Review Policies',
+                confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary') || '#0000FF'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.setItem(KEY, 'true');
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    document.getElementById('privacy')?.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }, 450);
+    }
+})();
+
+// Learn more toast
+(function() {
+    const btn = document.getElementById('learnMoreToastBtn');
+    const toastEl = document.getElementById('learnMoreToast');
+    if (btn && toastEl) {
+        const toast = new bootstrap.Toast(toastEl, {
+            delay: 5000
+        });
+        btn.addEventListener('click', () => {
+            toastEl.style.display = 'block';
+            toast.show();
+        });
+        toastEl.addEventListener('hidden.bs.toast', () => {
+            toastEl.style.display = 'none';
+        });
+    }
+})();
+  </script>
+ </body>
+</html>

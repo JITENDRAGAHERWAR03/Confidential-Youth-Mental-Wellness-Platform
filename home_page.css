@@ -1,0 +1,55 @@
+/* HomePage.css - Page-specific styles for the MindfulBot Home Page */
+/* Use Poppins across the page while preserving app variables */
+body {
+    font-family: "Poppins", var(--font-sans)
+    }
+/* Landing Navbar: transparent initially, solid on scroll */
+.navbar-landing {
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease
+    }
+.navbar-landing.scrolled {
+    background: #fff !important;
+    border-bottom-color: var(--divider-color) !important;
+    box-shadow: var(--shadow-1)
+    }
+/* Hero section */
+.hero-landing .display-5 {
+    color: var(--text-strong)
+    }
+.hero-landing .lead {
+    color: var(--text)
+    }
+.hero-bg-shape {
+    width: 1200px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.02), transparent 70%);
+    pointer-events: none
+    }
+/* Feature icons */
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-soft);
+    color: var(--color-primary);
+    font-size: 1.25rem
+    }
+/* CTA strip alignment improvements */
+.bg-primary-soft {
+    border: 1px solid var(--border-color)
+    }
+/* Improve card spacing consistency on this page */
+.app-card .card-body {
+    padding: 1rem 1rem
+    }
+/* Toast theme alignment */
+.toast.text-bg-light {
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-2)
+    }

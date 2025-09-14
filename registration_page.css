@@ -1,0 +1,31 @@
+/* Registration Page (registration_page.css) */
+/* Use brand typography on this page */
+body {
+    font-family: "Poppins", var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif
+    }
+/* Container tweaks specific for registration */
+.registration-form-container {
+    max-width: 480px
+    }
+/* Improve spacing for header text in form */
+.registration-form-container .page-title {
+    font-weight: 700
+    }
+/* Keep input-group action buttons tidy */
+#togglePassword i, #toggleConfirm i {
+    pointer-events: none
+    }
+/* Fine-tune strength label color */
+#strengthLabel {
+    color: var(--text-muted)
+    }
+/* Make alerts within form sit nicely */
+#formAlert {
+    margin-bottom: 12px
+    }
+/* On very small screens ensure padding breathes */
+@media (max-width: 575.98px) {
+    .registration-form-container {
+        padding: var(--space-4)
+        }
+    }
